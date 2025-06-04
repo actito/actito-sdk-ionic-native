@@ -69,7 +69,7 @@ google-services.json
 agconnect-services.json
 
 # Packed libs
-capacitor-notificare-*.tgz
+capacitor-actito-*.tgz
 
 # fastlane specific
 **/fastlane/report.xml
