@@ -1,0 +1,13 @@
+{
+	"appId": "com.actito.sample.app",
+	"appName": "sample",
+	"webDir": "build",
+	"bundledWebRuntime": false,
+	"packageClassList": [
+		"AppPlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"StatusBarPlugin",
+		"ActitoPlugin"
+	]
+}
