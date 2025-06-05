@@ -31,3 +31,6 @@ project(':capacitor-actito-inbox').projectDir = new File('../../capacitor-actito
 
 include ':capacitor-actito-push'
 project(':capacitor-actito-push').projectDir = new File('../../capacitor-actito-push/android')
+
+include ':capacitor-actito-push-ui'
+project(':capacitor-actito-push-ui').projectDir = new File('../../capacitor-actito-push-ui/android')

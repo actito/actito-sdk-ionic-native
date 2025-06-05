@@ -14,7 +14,7 @@ import {
 } from '@ionic/react';
 import type { ActitoInboxItem } from 'capacitor-actito-inbox';
 import { ActitoInbox } from 'capacitor-actito-inbox';
-// import { ActitoPushUI } from 'capacitor-actito-push-ui';
+import { ActitoPushUI } from 'capacitor-actito-push-ui';
 import { mailOpenOutline, refresh, trashOutline } from 'ionicons/icons';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
@@ -62,7 +62,7 @@ export const InboxView: FC = () => {
   async function open(item: ActitoInboxItem) {
     try {
       const notification = await ActitoInbox.open(item);
-      // await ActitoPushUI.presentNotification(notification);
+      await ActitoPushUI.presentNotification(notification);
 
       console.log('=== Opened and presented inbox item successfully ===');
 

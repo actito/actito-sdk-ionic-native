@@ -2,7 +2,7 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Actito } from 'capacitor-actito';
 import { ActitoPush } from 'capacitor-actito-push';
-// import { ActitoPushUI } from 'capacitor-actito-push-ui';
+import { ActitoPushUI } from 'capacitor-actito-push-ui';
 // import { ActitoScannables } from 'capacitor-actito-scannables';
 import type { FC } from 'react';
 import { useEffect } from 'react';
@@ -69,11 +69,11 @@ export const App: FC = () => {
       }),
 
       ActitoPush.onNotificationOpened(async (notification) => {
-        // await ActitoPushUI.presentNotification(notification);
+        await ActitoPushUI.presentNotification(notification);
       }),
 
       ActitoPush.onNotificationActionOpened(async ({ notification, action }) => {
-        // await ActitoPushUI.presentAction(notification, action);
+        await ActitoPushUI.presentAction(notification, action);
       }),
 
       // ActitoScannables.onScannableDetected(async (scannable) => {
