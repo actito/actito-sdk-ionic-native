@@ -56,12 +56,6 @@
             android:hardwareAccelerated="true"
             android:theme="@style/AppTheme.Translucent" />
 
-        <activity
-                android:name="com.actito.scannables.ScannableActivity"
-                android:exported="false"
-                android:hardwareAccelerated="true"
-                android:theme="@style/AppTheme.Translucent" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

@@ -46,5 +46,9 @@
 	{
 		"pkg": "capacitor-actito-push-ui",
 		"classpath": "com.actito.push.ui.capacitor.ActitoPushUIPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-scannables",
+		"classpath": "com.actito.scannables.capacitor.ActitoScannablesPlugin"
 	}
 ]

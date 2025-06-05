@@ -3,7 +3,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Actito } from 'capacitor-actito';
 import { ActitoPush } from 'capacitor-actito-push';
 import { ActitoPushUI } from 'capacitor-actito-push-ui';
-// import { ActitoScannables } from 'capacitor-actito-scannables';
+import { ActitoScannables } from 'capacitor-actito-scannables';
 import type { FC } from 'react';
 import { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
@@ -17,7 +17,7 @@ import { DeviceView } from './pages/device/device-view';
 import { CustomEventView } from './pages/events/custom-event-view';
 import { HomeView } from './pages/home/home-view';
 import { InboxView } from './pages/inbox/inbox-view';
-// import { ScannablesView } from './pages/scannables/scannables-view';
+import { ScannablesView } from './pages/scannables/scannables-view';
 import { TagsView } from './pages/tags/tags-view';
 
 /* Core CSS required for Ionic components to work properly */
@@ -76,11 +76,11 @@ export const App: FC = () => {
         await ActitoPushUI.presentAction(notification, action);
       }),
 
-      // ActitoScannables.onScannableDetected(async (scannable) => {
-      //   if (scannable.notification != null) {
-      //     await ActitoPushUI.presentNotification(scannable.notification);
-      //   }
-      // }),
+      ActitoScannables.onScannableDetected(async (scannable) => {
+        if (scannable.notification != null) {
+          await ActitoPushUI.presentNotification(scannable.notification);
+        }
+      }),
     ];
 
     return () => {
@@ -133,9 +133,9 @@ export const App: FC = () => {
                 <Beacons />
               </Route>
 
-              {/*<Route exact path="/scannables">*/}
-              {/*  <ScannablesView />*/}
-              {/*</Route>*/}
+              <Route exact path="/scannables">
+                <ScannablesView />
+              </Route>
 
               <Route exact path="/assets">
                 <AssetsView />

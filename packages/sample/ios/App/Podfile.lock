@@ -16,6 +16,8 @@ PODS:
     - Actito/ActitoUtilitiesKit
   - Actito/ActitoPushUIKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
+  - Actito/ActitoScannablesKit (5.0.0-canary.1):
+    - Actito/ActitoUtilitiesKit
   - Actito/ActitoUtilitiesKit (5.0.0-canary.1)
   - Capacitor (7.1.0):
     - CapacitorCordova
@@ -56,6 +58,11 @@ PODS:
     - Actito/ActitoPushUIKit (= 5.0.0-canary.1)
     - Actito/ActitoUtilitiesKit (= 5.0.0-canary.1)
     - Capacitor
+  - CapacitorActitoScannables (5.0.0-canary.1):
+    - Actito/ActitoKit (= 5.0.0-canary.1)
+    - Actito/ActitoScannablesKit (= 5.0.0-canary.1)
+    - Actito/ActitoUtilitiesKit (= 5.0.0-canary.1)
+    - Capacitor
   - CapacitorApp (7.0.0):
     - Capacitor
   - CapacitorCordova (7.1.0)
@@ -77,6 +84,7 @@ DEPENDENCIES:
   - CapacitorActitoLoyalty (from `../../../capacitor-actito-loyalty`)
   - CapacitorActitoPush (from `../../../capacitor-actito-push`)
   - CapacitorActitoPushUi (from `../../../capacitor-actito-push-ui`)
+  - CapacitorActitoScannables (from `../../../capacitor-actito-scannables`)
   - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
@@ -106,6 +114,8 @@ EXTERNAL SOURCES:
     :path: "../../../capacitor-actito-push"
   CapacitorActitoPushUi:
     :path: "../../../capacitor-actito-push-ui"
+  CapacitorActitoScannables:
+    :path: "../../../capacitor-actito-scannables"
   CapacitorApp:
     :path: "../../node_modules/@capacitor/app"
   CapacitorCordova:
@@ -128,12 +138,13 @@ SPEC CHECKSUMS:
   CapacitorActitoLoyalty: 298ab11812b24a87fb33e691cd1fc7d5add927f5
   CapacitorActitoPush: 5de59d4e587fd9f77a950f7e46be73c595b2bd1f
   CapacitorActitoPushUi: d1358476d2571503e3a8dedfb089419b5b3904cc
+  CapacitorActitoScannables: 82338a8a0f330ce9193e113564307eed63589fb7
   CapacitorApp: 9cb31064a6c6bb2b1438583733a7bf45557fc1da
   CapacitorCordova: 866217f32c1d25b326c568a10ea3ed0c36b13e29
   CapacitorHaptics: 7be406a91e4eb87287f321c6c68e1709d6837b3a
   CapacitorKeyboard: 4db71e694e7afb5d7c0be09b05495c19f7d6c914
   CapacitorStatusBar: a8c4c83ed2e973bdafb979e80e4b00d027832cb7
 
-PODFILE CHECKSUM: 255077030b71ae7a7395d372ff6f1cfbeb9f5440
+PODFILE CHECKSUM: a62a7dd8c99acf908fcf7be08a24313107e8641b
 
 COCOAPODS: 1.16.2
