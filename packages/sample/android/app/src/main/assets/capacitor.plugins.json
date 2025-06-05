@@ -18,5 +18,9 @@
 	{
 		"pkg": "capacitor-actito",
 		"classpath": "com.actito.capacitor.ActitoPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-assets",
+		"classpath": "com.actito.assets.capacitor.ActitoAssetsPlugin"
 	}
 ]

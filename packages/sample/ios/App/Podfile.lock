@@ -1,4 +1,6 @@
 PODS:
+  - Actito/ActitoAssetsKit (5.0.0-canary.1):
+    - Actito/ActitoUtilitiesKit
   - Actito/ActitoKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
   - Actito/ActitoNotificationServiceExtensionKit (5.0.0-canary.1)
@@ -8,6 +10,10 @@ PODS:
   - CapacitorActito (5.0.0-canary.1):
     - Actito/ActitoKit (= 5.0.0-canary.1)
     - Actito/ActitoUtilitiesKit (= 5.0.0-canary.1)
+    - Capacitor
+  - CapacitorActitoAssets (5.0.0-canary.1):
+    - Actito/ActitoAssetsKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
     - Capacitor
   - CapacitorApp (7.0.0):
     - Capacitor
@@ -23,6 +29,7 @@ DEPENDENCIES:
   - Actito/ActitoNotificationServiceExtensionKit (= 5.0.0-canary.1)
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - CapacitorActito (from `../../../capacitor-actito`)
+  - CapacitorActitoAssets (from `../../../capacitor-actito-assets`)
   - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
@@ -38,6 +45,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorActito:
     :path: "../../../capacitor-actito"
+  CapacitorActitoAssets:
+    :path: "../../../capacitor-actito-assets"
   CapacitorApp:
     :path: "../../node_modules/@capacitor/app"
   CapacitorCordova:
@@ -53,12 +62,13 @@ SPEC CHECKSUMS:
   Actito: 93c5844668acb24df54e83131ca364abbe52d375
   Capacitor: bceb785fb78f5e81e4a9e37843bc1c24bd9c7194
   CapacitorActito: ed5f0fe6add95ee1f50990f3b194174cc71a1349
+  CapacitorActitoAssets: aef039d041183e0108ae659bd2737a8966bb5f88
   CapacitorApp: 9cb31064a6c6bb2b1438583733a7bf45557fc1da
   CapacitorCordova: 866217f32c1d25b326c568a10ea3ed0c36b13e29
   CapacitorHaptics: 7be406a91e4eb87287f321c6c68e1709d6837b3a
   CapacitorKeyboard: 4db71e694e7afb5d7c0be09b05495c19f7d6c914
   CapacitorStatusBar: a8c4c83ed2e973bdafb979e80e4b00d027832cb7
 
-PODFILE CHECKSUM: 9e869c488b2fb4686f72b6342e0b84be090670c7
+PODFILE CHECKSUM: 9af0ec5a1ad7e1467f0caafd4497823cfe5ba832
 
 COCOAPODS: 1.16.2

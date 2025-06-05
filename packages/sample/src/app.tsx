@@ -11,7 +11,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { EventMonitor } from './components/event-monitor';
 import { AlertDialogProvider } from './contexts/alert-dialog';
 import { ToastProvider } from './contexts/toast';
-// import { AssetsView } from './pages/assets/assets-view';
+import { AssetsView } from './pages/assets/assets-view';
 // import { Beacons } from './pages/beacons/beacons-view';
 import { DeviceView } from './pages/device/device-view';
 import { CustomEventView } from './pages/events/custom-event-view';
@@ -137,9 +137,9 @@ export const App: FC = () => {
               {/*  <ScannablesView />*/}
               {/*</Route>*/}
 
-              {/*<Route exact path="/assets">*/}
-              {/*  <AssetsView />*/}
-              {/*</Route>*/}
+              <Route exact path="/assets">
+                <AssetsView />
+              </Route>
 
               <Route exact path="/events">
                 <CustomEventView />

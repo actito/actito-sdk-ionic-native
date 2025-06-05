@@ -19,6 +19,7 @@ def capacitor_pods
   pod 'CapacitorKeyboard', :path => '../../node_modules/@capacitor/keyboard'
   pod 'CapacitorStatusBar', :path => '../../node_modules/@capacitor/status-bar'
   pod 'CapacitorActito', :path => '../../../capacitor-actito'
+  pod 'CapacitorActitoAssets', :path => '../../../capacitor-actito-assets'
 end
 
 target 'App' do

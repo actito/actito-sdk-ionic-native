@@ -16,3 +16,6 @@ project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacit
 
 include ':capacitor-actito'
 project(':capacitor-actito').projectDir = new File('../../capacitor-actito/android')
+
+include ':capacitor-actito-assets'
+project(':capacitor-actito-assets').projectDir = new File('../../capacitor-actito-assets/android')
