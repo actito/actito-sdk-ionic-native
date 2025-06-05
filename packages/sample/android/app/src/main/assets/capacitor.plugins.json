@@ -26,5 +26,9 @@
 	{
 		"pkg": "capacitor-actito-geo",
 		"classpath": "com.actito.geo.capacitor.ActitoGeoPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-in-app-messaging",
+		"classpath": "com.actito.iam.capacitor.ActitoInAppMessagingPlugin"
 	}
 ]

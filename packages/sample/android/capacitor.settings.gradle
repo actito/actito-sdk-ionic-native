@@ -22,3 +22,6 @@ project(':capacitor-actito-assets').projectDir = new File('../../capacitor-actit
 
 include ':capacitor-actito-geo'
 project(':capacitor-actito-geo').projectDir = new File('../../capacitor-actito-geo/android')
+
+include ':capacitor-actito-in-app-messaging'
+project(':capacitor-actito-in-app-messaging').projectDir = new File('../../capacitor-actito-in-app-messaging/android')
