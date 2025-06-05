@@ -32,6 +32,7 @@
     "capacitor-actito-geo": "^5.0.0-canary.1",
     "capacitor-actito-in-app-messaging": "^5.0.0-canary.1",
     "capacitor-actito-inbox": "^5.0.0-canary.1",
+    "capacitor-actito-loyalty": "^5.0.0-canary.1",
     "capacitor-actito-push": "^5.0.0-canary.1",
     "capacitor-actito-push-ui": "^5.0.0-canary.1",
     "date-fns": "^2.29.3",

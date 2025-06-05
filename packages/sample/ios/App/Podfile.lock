@@ -9,6 +9,8 @@ PODS:
     - Actito/ActitoUtilitiesKit
   - Actito/ActitoKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
+  - Actito/ActitoLoyaltyKit (5.0.0-canary.1):
+    - Actito/ActitoUtilitiesKit
   - Actito/ActitoNotificationServiceExtensionKit (5.0.0-canary.1)
   - Actito/ActitoPushKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
@@ -40,6 +42,10 @@ PODS:
     - Actito/ActitoKit (= 5.0.0-canary.1)
     - Actito/ActitoUtilitiesKit (= 5.0.0-canary.1)
     - Capacitor
+  - CapacitorActitoLoyalty (5.0.0-canary.1):
+    - Actito/ActitoKit (= 5.0.0-canary.1)
+    - Actito/ActitoLoyaltyKit (= 5.0.0-canary.1)
+    - Capacitor
   - CapacitorActitoPush (5.0.0-canary.1):
     - Actito/ActitoKit (= 5.0.0-canary.1)
     - Actito/ActitoPushKit (= 5.0.0-canary.1)
@@ -68,6 +74,7 @@ DEPENDENCIES:
   - CapacitorActitoGeo (from `../../../capacitor-actito-geo`)
   - CapacitorActitoInAppMessaging (from `../../../capacitor-actito-in-app-messaging`)
   - CapacitorActitoInbox (from `../../../capacitor-actito-inbox`)
+  - CapacitorActitoLoyalty (from `../../../capacitor-actito-loyalty`)
   - CapacitorActitoPush (from `../../../capacitor-actito-push`)
   - CapacitorActitoPushUi (from `../../../capacitor-actito-push-ui`)
   - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
@@ -93,6 +100,8 @@ EXTERNAL SOURCES:
     :path: "../../../capacitor-actito-in-app-messaging"
   CapacitorActitoInbox:
     :path: "../../../capacitor-actito-inbox"
+  CapacitorActitoLoyalty:
+    :path: "../../../capacitor-actito-loyalty"
   CapacitorActitoPush:
     :path: "../../../capacitor-actito-push"
   CapacitorActitoPushUi:
@@ -116,6 +125,7 @@ SPEC CHECKSUMS:
   CapacitorActitoGeo: 22f9e5f3afeeedd6ee527b42e5099708f98ede9c
   CapacitorActitoInAppMessaging: afc472dc5587ce22c33fc7df0fa3f5895edcf341
   CapacitorActitoInbox: 3292498b882d2dcfd327bbd4f45861dcf10f4d22
+  CapacitorActitoLoyalty: 298ab11812b24a87fb33e691cd1fc7d5add927f5
   CapacitorActitoPush: 5de59d4e587fd9f77a950f7e46be73c595b2bd1f
   CapacitorActitoPushUi: d1358476d2571503e3a8dedfb089419b5b3904cc
   CapacitorApp: 9cb31064a6c6bb2b1438583733a7bf45557fc1da
@@ -124,6 +134,6 @@ SPEC CHECKSUMS:
   CapacitorKeyboard: 4db71e694e7afb5d7c0be09b05495c19f7d6c914
   CapacitorStatusBar: a8c4c83ed2e973bdafb979e80e4b00d027832cb7
 
-PODFILE CHECKSUM: 3dfa2f74cde3f08476bd35cff869d5c5db0ef10c
+PODFILE CHECKSUM: 255077030b71ae7a7395d372ff6f1cfbeb9f5440
 
 COCOAPODS: 1.16.2
