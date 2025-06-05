@@ -25,3 +25,6 @@ project(':capacitor-actito-geo').projectDir = new File('../../capacitor-actito-g
 
 include ':capacitor-actito-in-app-messaging'
 project(':capacitor-actito-in-app-messaging').projectDir = new File('../../capacitor-actito-in-app-messaging/android')
+
+include ':capacitor-actito-push'
+project(':capacitor-actito-push').projectDir = new File('../../capacitor-actito-push/android')

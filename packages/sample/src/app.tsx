@@ -1,7 +1,7 @@
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Actito } from 'capacitor-actito';
-// import { ActitoPush } from 'capacitor-actito-push';
+import { ActitoPush } from 'capacitor-actito-push';
 // import { ActitoPushUI } from 'capacitor-actito-push-ui';
 // import { ActitoScannables } from 'capacitor-actito-scannables';
 import type { FC } from 'react';
@@ -57,7 +57,7 @@ setupIonicReact({
 export const App: FC = () => {
   useEffect(function launch() {
     (async () => {
-      // await ActitoPush.setPresentationOptions(['banner', 'badge', 'sound']);
+      await ActitoPush.setPresentationOptions(['banner', 'badge', 'sound']);
       await Actito.launch();
     })();
   }, []);
@@ -68,14 +68,14 @@ export const App: FC = () => {
         await handleDeferredLink();
       }),
 
-      // ActitoPush.onNotificationOpened(async (notification) => {
-      //   await ActitoPushUI.presentNotification(notification);
-      // }),
-      //
-      // ActitoPush.onNotificationActionOpened(async ({ notification, action }) => {
-      //   await ActitoPushUI.presentAction(notification, action);
-      // }),
-      //
+      ActitoPush.onNotificationOpened(async (notification) => {
+        // await ActitoPushUI.presentNotification(notification);
+      }),
+
+      ActitoPush.onNotificationActionOpened(async ({ notification, action }) => {
+        // await ActitoPushUI.presentAction(notification, action);
+      }),
+
       // ActitoScannables.onScannableDetected(async (scannable) => {
       //   if (scannable.notification != null) {
       //     await ActitoPushUI.presentNotification(scannable.notification);

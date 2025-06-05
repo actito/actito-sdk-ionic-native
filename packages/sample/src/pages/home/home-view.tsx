@@ -10,7 +10,7 @@ import { GeoCardView } from './views/geo-card-view';
 import { InAppMessagingCardView } from './views/iam-card-view';
 import { LaunchFlowCardView } from './views/launch-flow-card-view';
 import { OtherFeaturesCardView } from './views/other-features-card-view';
-// import { RemoteNotificationsCardView } from './views/remote-notifications-card-view';
+import { RemoteNotificationsCardView } from './views/remote-notifications-card-view';
 
 export const HomeView: FC = () => {
   const [isReady, setIsReady] = useState(false);
@@ -44,7 +44,7 @@ export const HomeView: FC = () => {
             <>
               <CurrentDeviceCardView />
 
-              {/*<RemoteNotificationsCardView />*/}
+              <RemoteNotificationsCardView />
 
               <DnDNotificationsCardView />
 
