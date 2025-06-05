@@ -16,6 +16,7 @@ dependencies {
     implementation project(':capacitor-actito')
     implementation project(':capacitor-actito-assets')
     implementation project(':capacitor-actito-geo')
+    implementation project(':capacitor-actito-in-app-messaging')
 
 }
 

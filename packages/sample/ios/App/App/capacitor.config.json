@@ -9,6 +9,7 @@
 		"StatusBarPlugin",
 		"ActitoPlugin",
 		"ActitoAssetsPlugin",
-		"ActitoGeoPlugin"
+		"ActitoGeoPlugin",
+		"ActitoInAppMessagingPlugin"
 	]
 }

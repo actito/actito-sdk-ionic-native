@@ -1,6 +1,6 @@
 import { Actito } from 'capacitor-actito';
 import { ActitoGeo } from 'capacitor-actito-geo';
-// import { ActitoInAppMessaging } from 'capacitor-actito-in-app-messaging';
+import { ActitoInAppMessaging } from 'capacitor-actito-in-app-messaging';
 // import { ActitoInbox } from 'capacitor-actito-inbox';
 // import { ActitoPush } from 'capacitor-actito-push';
 // import { ActitoPushUI } from 'capacitor-actito-push-ui';
@@ -212,30 +212,30 @@ export function EventMonitor(): null {
         console.log(JSON.stringify(heading, null, 2));
       }),
 
-      // //
-      // // Actito In-App Messaging
-      // //
       //
-      // ActitoInAppMessaging.onMessagePresented((message) => {
-      //   console.log('=== ON MESSAGE PRESENTED ===');
-      //   console.log(JSON.stringify(message, null, 2));
-      // }),
-      // ActitoInAppMessaging.onMessageFinishedPresenting((message) => {
-      //   console.log('=== ON MESSAGE FINISHED PRESENTING ===');
-      //   console.log(JSON.stringify(message, null, 2));
-      // }),
-      // ActitoInAppMessaging.onMessageFailedToPresent((message) => {
-      //   console.log('=== ON MESSAGE FAILED TO PRESENT ===');
-      //   console.log(JSON.stringify(message, null, 2));
-      // }),
-      // ActitoInAppMessaging.onActionExecuted((data) => {
-      //   console.log('=== ON ACTION EXECUTED ===');
-      //   console.log(JSON.stringify(data, null, 2));
-      // }),
-      // ActitoInAppMessaging.onActionFailedToExecute((data) => {
-      //   console.log('=== ON ACTION FAILED TO EXECUTE ===');
-      //   console.log(JSON.stringify(data, null, 2));
-      // }),
+      // Actito In-App Messaging
+      //
+
+      ActitoInAppMessaging.onMessagePresented((message) => {
+        console.log('=== ON MESSAGE PRESENTED ===');
+        console.log(JSON.stringify(message, null, 2));
+      }),
+      ActitoInAppMessaging.onMessageFinishedPresenting((message) => {
+        console.log('=== ON MESSAGE FINISHED PRESENTING ===');
+        console.log(JSON.stringify(message, null, 2));
+      }),
+      ActitoInAppMessaging.onMessageFailedToPresent((message) => {
+        console.log('=== ON MESSAGE FAILED TO PRESENT ===');
+        console.log(JSON.stringify(message, null, 2));
+      }),
+      ActitoInAppMessaging.onActionExecuted((data) => {
+        console.log('=== ON ACTION EXECUTED ===');
+        console.log(JSON.stringify(data, null, 2));
+      }),
+      ActitoInAppMessaging.onActionFailedToExecute((data) => {
+        console.log('=== ON ACTION FAILED TO EXECUTE ===');
+        console.log(JSON.stringify(data, null, 2));
+      }),
     ];
 
     return () => {
