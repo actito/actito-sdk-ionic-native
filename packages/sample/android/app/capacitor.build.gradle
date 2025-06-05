@@ -15,6 +15,7 @@ dependencies {
     implementation project(':capacitor-status-bar')
     implementation project(':capacitor-actito')
     implementation project(':capacitor-actito-assets')
+    implementation project(':capacitor-actito-geo')
 
 }
 

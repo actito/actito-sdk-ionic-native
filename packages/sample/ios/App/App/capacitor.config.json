@@ -8,6 +8,7 @@
 		"KeyboardPlugin",
 		"StatusBarPlugin",
 		"ActitoPlugin",
-		"ActitoAssetsPlugin"
+		"ActitoAssetsPlugin",
+		"ActitoGeoPlugin"
 	]
 }

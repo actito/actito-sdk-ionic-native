@@ -20,6 +20,7 @@ def capacitor_pods
   pod 'CapacitorStatusBar', :path => '../../node_modules/@capacitor/status-bar'
   pod 'CapacitorActito', :path => '../../../capacitor-actito'
   pod 'CapacitorActitoAssets', :path => '../../../capacitor-actito-assets'
+  pod 'CapacitorActitoGeo', :path => '../../../capacitor-actito-geo'
 end
 
 target 'App' do
