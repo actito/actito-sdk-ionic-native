@@ -16,7 +16,7 @@ import { Beacons } from './pages/beacons/beacons-view';
 import { DeviceView } from './pages/device/device-view';
 import { CustomEventView } from './pages/events/custom-event-view';
 import { HomeView } from './pages/home/home-view';
-// import { InboxView } from './pages/inbox/inbox-view';
+import { InboxView } from './pages/inbox/inbox-view';
 // import { ScannablesView } from './pages/scannables/scannables-view';
 import { TagsView } from './pages/tags/tags-view';
 
@@ -121,9 +121,9 @@ export const App: FC = () => {
                 <DeviceView />
               </Route>
 
-              {/*<Route exact path="/inbox">*/}
-              {/*  <InboxView />*/}
-              {/*</Route>*/}
+              <Route exact path="/inbox">
+                <InboxView />
+              </Route>
 
               <Route exact path="/tags">
                 <TagsView />
