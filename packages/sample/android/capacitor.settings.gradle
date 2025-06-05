@@ -29,6 +29,9 @@ project(':capacitor-actito-in-app-messaging').projectDir = new File('../../capac
 include ':capacitor-actito-inbox'
 project(':capacitor-actito-inbox').projectDir = new File('../../capacitor-actito-inbox/android')
 
+include ':capacitor-actito-loyalty'
+project(':capacitor-actito-loyalty').projectDir = new File('../../capacitor-actito-loyalty/android')
+
 include ':capacitor-actito-push'
 project(':capacitor-actito-push').projectDir = new File('../../capacitor-actito-push/android')
 

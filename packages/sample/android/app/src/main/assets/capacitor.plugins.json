@@ -36,6 +36,10 @@
 		"classpath": "com.actito.inbox.capacitor.ActitoInboxPlugin"
 	},
 	{
+		"pkg": "capacitor-actito-loyalty",
+		"classpath": "com.actito.loyalty.capacitor.ActitoLoyaltyPlugin"
+	},
+	{
 		"pkg": "capacitor-actito-push",
 		"classpath": "com.actito.push.capacitor.ActitoPushPlugin"
 	},
