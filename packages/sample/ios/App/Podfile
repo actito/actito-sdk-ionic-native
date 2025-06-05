@@ -24,6 +24,7 @@ def capacitor_pods
   pod 'CapacitorActitoInAppMessaging', :path => '../../../capacitor-actito-in-app-messaging'
   pod 'CapacitorActitoInbox', :path => '../../../capacitor-actito-inbox'
   pod 'CapacitorActitoPush', :path => '../../../capacitor-actito-push'
+  pod 'CapacitorActitoPushUi', :path => '../../../capacitor-actito-push-ui'
 end
 
 target 'App' do

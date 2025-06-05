@@ -38,5 +38,9 @@
 	{
 		"pkg": "capacitor-actito-push",
 		"classpath": "com.actito.push.capacitor.ActitoPushPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-push-ui",
+		"classpath": "com.actito.push.ui.capacitor.ActitoPushUIPlugin"
 	}
 ]

@@ -19,6 +19,7 @@ dependencies {
     implementation project(':capacitor-actito-in-app-messaging')
     implementation project(':capacitor-actito-inbox')
     implementation project(':capacitor-actito-push')
+    implementation project(':capacitor-actito-push-ui')
 
 }
 
