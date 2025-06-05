@@ -22,6 +22,7 @@ def capacitor_pods
   pod 'CapacitorActitoAssets', :path => '../../../capacitor-actito-assets'
   pod 'CapacitorActitoGeo', :path => '../../../capacitor-actito-geo'
   pod 'CapacitorActitoInAppMessaging', :path => '../../../capacitor-actito-in-app-messaging'
+  pod 'CapacitorActitoInbox', :path => '../../../capacitor-actito-inbox'
   pod 'CapacitorActitoPush', :path => '../../../capacitor-actito-push'
 end
 

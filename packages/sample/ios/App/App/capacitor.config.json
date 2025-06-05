@@ -11,6 +11,7 @@
 		"ActitoAssetsPlugin",
 		"ActitoGeoPlugin",
 		"ActitoInAppMessagingPlugin",
+		"ActitoInboxPlugin",
 		"ActitoPushPlugin"
 	]
 }

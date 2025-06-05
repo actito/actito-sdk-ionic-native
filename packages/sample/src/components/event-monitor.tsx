@@ -1,7 +1,7 @@
 import { Actito } from 'capacitor-actito';
 import { ActitoGeo } from 'capacitor-actito-geo';
 import { ActitoInAppMessaging } from 'capacitor-actito-in-app-messaging';
-// import { ActitoInbox } from 'capacitor-actito-inbox';
+import { ActitoInbox } from 'capacitor-actito-inbox';
 import { ActitoPush } from 'capacitor-actito-push';
 // import { ActitoPushUI } from 'capacitor-actito-push-ui';
 // import { ActitoScannables } from 'capacitor-actito-scannables';
@@ -148,20 +148,20 @@ export function EventMonitor(): null {
       //   console.log('=== CUSTOM ACTION RECEIVED ===');
       //   console.log(JSON.stringify({ notification, action, url }, null, 2));
       // }),
+
       //
-      // //
-      // // Actito Inbox events
-      // //
+      // Actito Inbox events
       //
-      // ActitoInbox.onInboxUpdated((items) => {
-      //   console.log('=== INBOX UPDATED ===');
-      //   console.log(JSON.stringify(items, null, 2));
-      // }),
-      // ActitoInbox.onBadgeUpdated((badge) => {
-      //   console.log('=== BADGE UPDATED ===');
-      //   console.log(JSON.stringify(badge, null, 2));
-      // }),
-      //
+
+      ActitoInbox.onInboxUpdated((items) => {
+        console.log('=== INBOX UPDATED ===');
+        console.log(JSON.stringify(items, null, 2));
+      }),
+      ActitoInbox.onBadgeUpdated((badge) => {
+        console.log('=== BADGE UPDATED ===');
+        console.log(JSON.stringify(badge, null, 2));
+      }),
+
       // //
       // // Actito Scannables events
       // //

@@ -32,6 +32,10 @@
 		"classpath": "com.actito.iam.capacitor.ActitoInAppMessagingPlugin"
 	},
 	{
+		"pkg": "capacitor-actito-inbox",
+		"classpath": "com.actito.inbox.capacitor.ActitoInboxPlugin"
+	},
+	{
 		"pkg": "capacitor-actito-push",
 		"classpath": "com.actito.push.capacitor.ActitoPushPlugin"
 	}

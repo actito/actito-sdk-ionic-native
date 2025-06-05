@@ -1,5 +1,5 @@
 import { IonBadge, IonCard, IonIcon, IonItem, IonLabel, IonText, IonToggle } from '@ionic/react';
-// import { ActitoInbox } from 'capacitor-actito-inbox';
+import { ActitoInbox } from 'capacitor-actito-inbox';
 import { ActitoPush, PushPermissionStatus } from 'capacitor-actito-push';
 import { fileTrayOutline, informationCircleOutline, notificationsOutline, pricetagOutline } from 'ionicons/icons';
 import type { FC } from 'react';
@@ -36,7 +36,7 @@ export const RemoteNotificationsCardView: FC = () => {
 
   useEffect(function setupListeners() {
     const listeners = [
-      // ActitoInbox.onBadgeUpdated(setBadge),
+      ActitoInbox.onBadgeUpdated(setBadge),
       ActitoPush.onNotificationSettingsChanged(async () => await checkNotificationsStatus()),
     ];
 
@@ -60,8 +60,9 @@ export const RemoteNotificationsCardView: FC = () => {
     function getBadge() {
       (async () => {
         try {
-          // const result = await ActitoInbox.getBadge();
-          // setBadge(result);
+          const result = await ActitoInbox.getBadge();
+
+          setBadge(result);
         } catch (e) {
           console.log('=== Error getting badge ===');
           console.log(JSON.stringify(e));
