@@ -4,7 +4,7 @@ import { ActitoInAppMessaging } from 'capacitor-actito-in-app-messaging';
 import { ActitoInbox } from 'capacitor-actito-inbox';
 import { ActitoPush } from 'capacitor-actito-push';
 import { ActitoPushUI } from 'capacitor-actito-push-ui';
-// import { ActitoScannables } from 'capacitor-actito-scannables';
+import { ActitoScannables } from 'capacitor-actito-scannables';
 import { useEffect } from 'react';
 
 import { useToastContext } from '../contexts/toast';
@@ -162,19 +162,19 @@ export function EventMonitor(): null {
         console.log(JSON.stringify(badge, null, 2));
       }),
 
-      // //
-      // // Actito Scannables events
-      // //
       //
-      // ActitoScannables.onScannableDetected(async (scannable) => {
-      //   console.log('=== SCANNABLE DETECTED ===');
-      //   console.log(JSON.stringify(scannable, null, 2));
-      // }),
-      // ActitoScannables.onScannableSessionFailed((error) => {
-      //   console.log('=== SCANNABLE SESSION FAILED ===');
-      //   console.log(JSON.stringify(error, null, 2));
-      // }),
+      // Actito Scannables events
       //
+
+      ActitoScannables.onScannableDetected(async (scannable) => {
+        console.log('=== SCANNABLE DETECTED ===');
+        console.log(JSON.stringify(scannable, null, 2));
+      }),
+      ActitoScannables.onScannableSessionFailed((error) => {
+        console.log('=== SCANNABLE SESSION FAILED ===');
+        console.log(JSON.stringify(error, null, 2));
+      }),
+
       //
       // Actito Geo events
       //
