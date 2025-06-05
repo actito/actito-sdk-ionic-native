@@ -6,7 +6,7 @@ import '../../styles/index.css';
 
 import { CurrentDeviceCardView } from './views/current-device-card-view';
 import { DnDNotificationsCardView } from './views/dnd-card-view';
-// import { GeoCardView } from './views/geo-card-view';
+import { GeoCardView } from './views/geo-card-view';
 // import { InAppMessagingCardView } from './views/iam-card-view';
 import { LaunchFlowCardView } from './views/launch-flow-card-view';
 import { OtherFeaturesCardView } from './views/other-features-card-view';
@@ -48,7 +48,7 @@ export const HomeView: FC = () => {
 
               <DnDNotificationsCardView />
 
-              {/*<GeoCardView />*/}
+              <GeoCardView />
 
               {/*<InAppMessagingCardView />*/}
 

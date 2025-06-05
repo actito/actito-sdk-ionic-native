@@ -12,7 +12,7 @@ import { EventMonitor } from './components/event-monitor';
 import { AlertDialogProvider } from './contexts/alert-dialog';
 import { ToastProvider } from './contexts/toast';
 import { AssetsView } from './pages/assets/assets-view';
-// import { Beacons } from './pages/beacons/beacons-view';
+import { Beacons } from './pages/beacons/beacons-view';
 import { DeviceView } from './pages/device/device-view';
 import { CustomEventView } from './pages/events/custom-event-view';
 import { HomeView } from './pages/home/home-view';
@@ -129,9 +129,9 @@ export const App: FC = () => {
                 <TagsView />
               </Route>
 
-              {/*<Route exact path="/beacons">*/}
-              {/*  <Beacons />*/}
-              {/*</Route>*/}
+              <Route exact path="/beacons">
+                <Beacons />
+              </Route>
 
               {/*<Route exact path="/scannables">*/}
               {/*  <ScannablesView />*/}

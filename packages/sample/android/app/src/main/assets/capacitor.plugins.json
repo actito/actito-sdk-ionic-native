@@ -22,5 +22,9 @@
 	{
 		"pkg": "capacitor-actito-assets",
 		"classpath": "com.actito.assets.capacitor.ActitoAssetsPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-geo",
+		"classpath": "com.actito.geo.capacitor.ActitoGeoPlugin"
 	}
 ]
