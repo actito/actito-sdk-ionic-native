@@ -3,14 +3,18 @@ package com.actito.inbox.capacitor
 import android.os.Handler
 import android.os.Looper
 import androidx.lifecycle.Observer
-import com.getcapacitor.*
-import com.getcapacitor.annotation.CapacitorPlugin
 import com.actito.Actito
 import com.actito.ActitoCallback
 import com.actito.inbox.ktx.inbox
 import com.actito.inbox.models.ActitoInboxItem
 import com.actito.models.ActitoNotification
-import java.util.*
+import com.getcapacitor.JSArray
+import com.getcapacitor.JSObject
+import com.getcapacitor.Plugin
+import com.getcapacitor.PluginCall
+import com.getcapacitor.PluginMethod
+import com.getcapacitor.annotation.CapacitorPlugin
+import java.util.SortedSet
 
 @CapacitorPlugin(name = "ActitoInboxPlugin")
 public class ActitoInboxPlugin : Plugin() {

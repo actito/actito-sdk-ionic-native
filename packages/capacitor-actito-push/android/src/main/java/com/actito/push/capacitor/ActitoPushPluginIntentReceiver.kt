@@ -1,12 +1,12 @@
 package com.actito.push.capacitor
 
 import android.content.Context
-import com.getcapacitor.JSObject
 import com.actito.models.ActitoNotification
 import com.actito.push.ActitoPushIntentReceiver
 import com.actito.push.models.ActitoNotificationDeliveryMechanism
 import com.actito.push.models.ActitoSystemNotification
 import com.actito.push.models.ActitoUnknownNotification
+import com.getcapacitor.JSObject
 
 internal class ActitoPushPluginIntentReceiver : ActitoPushIntentReceiver() {
 

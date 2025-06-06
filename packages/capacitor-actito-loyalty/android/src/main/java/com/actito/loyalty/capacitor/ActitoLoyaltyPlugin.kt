@@ -1,14 +1,14 @@
 package com.actito.loyalty.capacitor
 
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.loyalty.ktx.loyalty
+import com.actito.loyalty.models.ActitoPass
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
 import com.getcapacitor.PluginMethod
 import com.getcapacitor.annotation.CapacitorPlugin
-import com.actito.Actito
-import com.actito.ActitoCallback
-import com.actito.loyalty.ktx.loyalty
-import com.actito.loyalty.models.ActitoPass
 
 @CapacitorPlugin(name = "ActitoLoyaltyPlugin")
 public class ActitoLoyaltyPlugin : Plugin() {

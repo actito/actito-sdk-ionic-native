@@ -16,15 +16,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.push.ktx.push
+import com.actito.push.models.ActitoPushSubscription
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
 import com.getcapacitor.PluginMethod
 import com.getcapacitor.annotation.CapacitorPlugin
-import com.actito.Actito
-import com.actito.ActitoCallback
-import com.actito.push.ktx.push
-import com.actito.push.models.ActitoPushSubscription
 
 @CapacitorPlugin(name = "ActitoPushPlugin")
 public class ActitoPushPlugin : Plugin() {

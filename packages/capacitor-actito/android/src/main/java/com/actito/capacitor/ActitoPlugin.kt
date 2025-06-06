@@ -2,14 +2,24 @@ package com.actito.capacitor
 
 import android.content.Intent
 import android.net.Uri
-import com.getcapacitor.*
-import com.getcapacitor.annotation.CapacitorPlugin
-import org.json.JSONObject
 import com.actito.Actito
 import com.actito.ActitoCallback
 import com.actito.ktx.device
 import com.actito.ktx.events
-import com.actito.models.*
+import com.actito.models.ActitoApplication
+import com.actito.models.ActitoDoNotDisturb
+import com.actito.models.ActitoDynamicLink
+import com.actito.models.ActitoEvent
+import com.actito.models.ActitoEventData
+import com.actito.models.ActitoNotification
+import com.actito.models.ActitoUserData
+import com.getcapacitor.JSArray
+import com.getcapacitor.JSObject
+import com.getcapacitor.Plugin
+import com.getcapacitor.PluginCall
+import com.getcapacitor.PluginMethod
+import com.getcapacitor.annotation.CapacitorPlugin
+import org.json.JSONObject
 
 @CapacitorPlugin(name = "ActitoPlugin")
 public class ActitoPlugin : Plugin() {

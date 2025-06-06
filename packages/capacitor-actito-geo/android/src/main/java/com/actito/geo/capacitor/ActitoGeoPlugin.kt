@@ -13,14 +13,18 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.getcapacitor.*
-import com.getcapacitor.annotation.CapacitorPlugin
 import com.actito.Actito
 import com.actito.geo.ActitoGeo
 import com.actito.geo.ktx.geo
 import com.actito.geo.models.ActitoBeacon
 import com.actito.geo.models.ActitoLocation
 import com.actito.geo.models.ActitoRegion
+import com.getcapacitor.JSArray
+import com.getcapacitor.JSObject
+import com.getcapacitor.Plugin
+import com.getcapacitor.PluginCall
+import com.getcapacitor.PluginMethod
+import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "ActitoGeoPlugin")
 public class ActitoGeoPlugin : Plugin(), ActitoGeo.Listener {
