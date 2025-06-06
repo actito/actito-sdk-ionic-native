@@ -5,8 +5,8 @@
 //  Created by Yevhenii Smirnov on 04/06/2025.
 //
 
-import UserNotifications
 import ActitoNotificationServiceExtensionKit
+import UserNotifications
 
 class NotificationService: UNNotificationServiceExtension {
 

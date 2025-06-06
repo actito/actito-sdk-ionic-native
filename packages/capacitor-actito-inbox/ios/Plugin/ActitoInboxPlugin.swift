@@ -1,7 +1,7 @@
-import Foundation
-import Capacitor
-import ActitoKit
 import ActitoInboxKit
+import ActitoKit
+import Capacitor
+import Foundation
 
 @objc(ActitoInboxPlugin)
 public class ActitoInboxPlugin: CAPPlugin {
@@ -11,7 +11,7 @@ public class ActitoInboxPlugin: CAPPlugin {
         EventBroker.instance.setup { self.notifyListeners($0, data: $1) }
         Actito.shared.inbox().delegate = self
     }
-    
+
     @objc func getItems(_ call: CAPPluginCall) {
         do {
             call.resolve([
@@ -21,33 +21,33 @@ public class ActitoInboxPlugin: CAPPlugin {
             call.reject(error.localizedDescription)
         }
     }
-    
+
     @objc func getBadge(_ call: CAPPluginCall) {
         call.resolve([
             "result": Actito.shared.inbox().badge
         ])
     }
-    
+
     @objc func refresh(_ call: CAPPluginCall) {
         Actito.shared.inbox().refresh()
         call.resolve()
     }
-    
+
     @objc func open(_ call: CAPPluginCall) {
         guard let json = call.getObject("item") else {
             call.reject("Missing 'item' parameter.")
             return
         }
-        
+
         let item: ActitoInboxItem
-        
+
         do {
             item = try ActitoInboxItem.fromJson(json: json)
         } catch {
             call.reject(error.localizedDescription)
             return
         }
-        
+
         Actito.shared.inbox().open(item) { result in
             switch result {
             case let .success(notification):
@@ -63,22 +63,22 @@ public class ActitoInboxPlugin: CAPPlugin {
             }
         }
     }
-    
+
     @objc func markAsRead(_ call: CAPPluginCall) {
         guard let json = call.getObject("item") else {
             call.reject("Missing 'item' parameter.")
             return
         }
-        
+
         let item: ActitoInboxItem
-        
+
         do {
             item = try ActitoInboxItem.fromJson(json: json)
         } catch {
             call.reject(error.localizedDescription)
             return
         }
-        
+
         Actito.shared.inbox().markAsRead(item) { result in
             switch result {
             case .success:
@@ -88,7 +88,7 @@ public class ActitoInboxPlugin: CAPPlugin {
             }
         }
     }
-    
+
     @objc func markAllAsRead(_ call: CAPPluginCall) {
         Actito.shared.inbox().markAllAsRead { result in
             switch result {
@@ -99,22 +99,22 @@ public class ActitoInboxPlugin: CAPPlugin {
             }
         }
     }
-    
+
     @objc func remove(_ call: CAPPluginCall) {
         guard let json = call.getObject("item") else {
             call.reject("Missing 'item' parameter.")
             return
         }
-        
+
         let item: ActitoInboxItem
-        
+
         do {
             item = try ActitoInboxItem.fromJson(json: json)
         } catch {
             call.reject(error.localizedDescription)
             return
         }
-        
+
         Actito.shared.inbox().remove(item) { result in
             switch result {
             case .success:
@@ -124,7 +124,7 @@ public class ActitoInboxPlugin: CAPPlugin {
             }
         }
     }
-    
+
     @objc func clear(_ call: CAPPluginCall) {
         Actito.shared.inbox().clear { result in
             switch result {
@@ -147,7 +147,7 @@ extension ActitoInboxPlugin: ActitoInboxDelegate {
             logger.error("Failed to emit the inbox_updated event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoInbox: ActitoInbox, didUpdateBadge badge: Int) {
         EventBroker.instance.dispatchEvent("badge_updated", data: [
             "badge": badge

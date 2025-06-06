@@ -1,7 +1,7 @@
-import Foundation
-import Capacitor
 import ActitoKit
 import ActitoPushKit
+import Capacitor
+import Foundation
 
 @objc(ActitoPushPlugin)
 public class ActitoPushPlugin: CAPPlugin {
@@ -284,7 +284,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
         }
     }
 
-    public func actito(_ actitoPush: ActitoPush, didReceiveUnknownNotification userInfo: [AnyHashable : Any]) {
+    public func actito(_ actitoPush: ActitoPush, didReceiveUnknownNotification userInfo: [AnyHashable: Any]) {
         let data: [String: Any] = Dictionary(uniqueKeysWithValues: userInfo.compactMap {
             guard let key = $0.key as? String else {
                 return nil
@@ -304,7 +304,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
         }
     }
 
-    public func actito(_ actitoPush: ActitoPush, didOpenUnknownNotification userInfo: [AnyHashable : Any]) {
+    public func actito(_ actitoPush: ActitoPush, didOpenUnknownNotification userInfo: [AnyHashable: Any]) {
         let data: [String: Any] = Dictionary(uniqueKeysWithValues: userInfo.compactMap {
             guard let key = $0.key as? String else {
                 return nil
@@ -329,7 +329,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
         }
     }
 
-    public func actito(_ actitoPush: ActitoPush, didOpenUnknownAction action: String, for notification: [AnyHashable : Any], responseText: String?) {
+    public func actito(_ actitoPush: ActitoPush, didOpenUnknownAction action: String, for notification: [AnyHashable: Any], responseText: String?) {
         let notificationMap: [String: Any] = Dictionary(uniqueKeysWithValues: notification.compactMap {
             guard let key = $0.key as? String else {
                 return nil

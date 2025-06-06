@@ -1,5 +1,5 @@
-import UIKit
 import Capacitor
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
