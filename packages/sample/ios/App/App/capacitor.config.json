@@ -15,6 +15,7 @@
 		"ActitoLoyaltyPlugin",
 		"ActitoPushPlugin",
 		"ActitoPushUIPlugin",
-		"ActitoScannablesPlugin"
+		"ActitoScannablesPlugin",
+		"ActitoUserInboxPlugin"
 	]
 }

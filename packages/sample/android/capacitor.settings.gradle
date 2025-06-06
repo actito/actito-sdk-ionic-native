@@ -40,3 +40,6 @@ project(':capacitor-actito-push-ui').projectDir = new File('../../capacitor-acti
 
 include ':capacitor-actito-scannables'
 project(':capacitor-actito-scannables').projectDir = new File('../../capacitor-actito-scannables/android')
+
+include ':capacitor-actito-user-inbox'
+project(':capacitor-actito-user-inbox').projectDir = new File('../../capacitor-actito-user-inbox/android')

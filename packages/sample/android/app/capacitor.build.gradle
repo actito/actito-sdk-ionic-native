@@ -22,6 +22,7 @@ dependencies {
     implementation project(':capacitor-actito-push')
     implementation project(':capacitor-actito-push-ui')
     implementation project(':capacitor-actito-scannables')
+    implementation project(':capacitor-actito-user-inbox')
 
 }
 
