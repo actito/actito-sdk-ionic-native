@@ -1,0 +1,38 @@
+[
+	{
+		"pkg": "@capacitor/app",
+		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
+	},
+	{
+		"pkg": "@capacitor/browser",
+		"classpath": "com.capacitorjs.plugins.browser.BrowserPlugin"
+	},
+	{
+		"pkg": "@capacitor/haptics",
+		"classpath": "com.capacitorjs.plugins.haptics.HapticsPlugin"
+	},
+	{
+		"pkg": "@capacitor/keyboard",
+		"classpath": "com.capacitorjs.plugins.keyboard.KeyboardPlugin"
+	},
+	{
+		"pkg": "@capacitor/status-bar",
+		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
+	},
+	{
+		"pkg": "capacitor-actito",
+		"classpath": "com.actito.capacitor.ActitoPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-push",
+		"classpath": "com.actito.push.capacitor.ActitoPushPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-push-ui",
+		"classpath": "com.actito.push.ui.capacitor.ActitoPushUIPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-user-inbox",
+		"classpath": "com.actito.inbox.user.capacitor.ActitoUserInboxPlugin"
+	}
+]
