@@ -50,9 +50,5 @@
 	{
 		"pkg": "capacitor-actito-scannables",
 		"classpath": "com.actito.scannables.capacitor.ActitoScannablesPlugin"
-	},
-	{
-		"pkg": "capacitor-actito-user-inbox",
-		"classpath": "com.actito.inbox.user.capacitor.ActitoUserInboxPlugin"
 	}
 ]
