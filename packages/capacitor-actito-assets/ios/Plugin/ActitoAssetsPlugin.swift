@@ -1,7 +1,7 @@
-import Foundation
-import Capacitor
-import ActitoKit
 import ActitoAssetsKit
+import ActitoKit
+import Capacitor
+import Foundation
 
 @objc(ActitoAssetsPlugin)
 public class ActitoAssetsPlugin: CAPPlugin {
@@ -10,7 +10,7 @@ public class ActitoAssetsPlugin: CAPPlugin {
             call.reject("Missing 'group' parameter.")
             return
         }
-        
+
         Actito.shared.assets().fetch(group: group) { result in
             switch result {
             case let .success(assets):

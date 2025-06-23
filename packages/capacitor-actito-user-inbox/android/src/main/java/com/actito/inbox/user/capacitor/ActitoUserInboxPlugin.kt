@@ -1,12 +1,15 @@
 package com.actito.inbox.user.capacitor
 
-import com.getcapacitor.*
-import com.getcapacitor.annotation.CapacitorPlugin
 import com.actito.Actito
 import com.actito.ActitoCallback
 import com.actito.inbox.user.ktx.userInbox
 import com.actito.inbox.user.models.ActitoUserInboxItem
 import com.actito.models.ActitoNotification
+import com.getcapacitor.JSObject
+import com.getcapacitor.Plugin
+import com.getcapacitor.PluginCall
+import com.getcapacitor.PluginMethod
+import com.getcapacitor.annotation.CapacitorPlugin
 
 
 @CapacitorPlugin(name = "ActitoUserInboxPlugin")

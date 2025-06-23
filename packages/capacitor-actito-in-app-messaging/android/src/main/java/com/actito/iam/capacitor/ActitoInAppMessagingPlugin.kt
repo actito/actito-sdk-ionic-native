@@ -2,15 +2,15 @@ package com.actito.iam.capacitor
 
 import android.os.Handler
 import android.os.Looper
+import com.actito.Actito
+import com.actito.iam.ActitoInAppMessaging
+import com.actito.iam.ktx.inAppMessaging
+import com.actito.iam.models.ActitoInAppMessage
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
 import com.getcapacitor.PluginMethod
 import com.getcapacitor.annotation.CapacitorPlugin
-import com.actito.Actito
-import com.actito.iam.ActitoInAppMessaging
-import com.actito.iam.ktx.inAppMessaging
-import com.actito.iam.models.ActitoInAppMessage
 
 @CapacitorPlugin(name = "ActitoInAppMessagingPlugin")
 public class ActitoInAppMessagingPlugin : Plugin(), ActitoInAppMessaging.MessageLifecycleListener {

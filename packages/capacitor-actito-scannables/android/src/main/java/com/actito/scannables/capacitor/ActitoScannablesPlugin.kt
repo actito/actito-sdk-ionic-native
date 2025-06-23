@@ -1,15 +1,15 @@
 package com.actito.scannables.capacitor
 
-import com.getcapacitor.JSObject
-import com.getcapacitor.Plugin
-import com.getcapacitor.PluginCall
-import com.getcapacitor.PluginMethod
-import com.getcapacitor.annotation.CapacitorPlugin
 import com.actito.Actito
 import com.actito.ActitoCallback
 import com.actito.scannables.ActitoScannables
 import com.actito.scannables.ktx.scannables
 import com.actito.scannables.models.ActitoScannable
+import com.getcapacitor.JSObject
+import com.getcapacitor.Plugin
+import com.getcapacitor.PluginCall
+import com.getcapacitor.PluginMethod
+import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "ActitoScannablesPlugin")
 public class ActitoScannablesPlugin : Plugin(), ActitoScannables.ScannableSessionListener {

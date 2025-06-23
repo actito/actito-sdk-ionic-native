@@ -1,7 +1,7 @@
-import Foundation
-import Capacitor
-import ActitoKit
 import ActitoInAppMessagingKit
+import ActitoKit
+import Capacitor
+import Foundation
 
 @objc(ActitoInAppMessagingPlugin)
 public class ActitoInAppMessagingPlugin: CAPPlugin {
@@ -11,23 +11,23 @@ public class ActitoInAppMessagingPlugin: CAPPlugin {
         EventBroker.instance.setup { self.notifyListeners($0, data: $1) }
         Actito.shared.inAppMessaging().delegate = self
     }
-    
+
     @objc func hasMessagesSuppressed(_ call: CAPPluginCall) {
         call.resolve([
             "result": Actito.shared.inAppMessaging().hasMessagesSuppressed
         ])
     }
-    
+
     @objc func setMessagesSuppressed(_ call: CAPPluginCall) {
         guard let suppressed = call.getBool("suppressed") else {
             call.reject("Missing 'suppressed' parameter.")
             return
         }
-        
+
         let evaluateContext = call.getBool("evaluateContext") ?? false
-        
+
         Actito.shared.inAppMessaging().setMessagesSuppressed(suppressed, evaluateContext: evaluateContext)
-        
+
         call.resolve()
     }
 }

@@ -1,6 +1,6 @@
-import Foundation
-import Capacitor
 import ActitoKit
+import Capacitor
+import Foundation
 
 @objc(ActitoPlugin)
 public class ActitoPlugin: CAPPlugin {

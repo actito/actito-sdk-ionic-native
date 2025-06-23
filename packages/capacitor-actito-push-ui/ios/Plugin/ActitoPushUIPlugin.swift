@@ -1,7 +1,7 @@
-import Foundation
-import Capacitor
 import ActitoKit
 import ActitoPushUIKit
+import Capacitor
+import Foundation
 
 @objc(ActitoPushUIPlugin)
 public class ActitoPushUIPlugin: CAPPlugin {
@@ -10,35 +10,35 @@ public class ActitoPushUIPlugin: CAPPlugin {
             UIApplication.shared.delegate?.window??.rootViewController
         }
     }
-    
+
     public override func load() {
         addApplicationLaunchListener()
 
         EventBroker.instance.setup { self.notifyListeners($0, data: $1) }
         Actito.shared.pushUI().delegate = self
     }
-    
+
     @objc func presentNotification(_ call: CAPPluginCall) {
         guard let json = call.getObject("notification") else {
             call.reject("Missing 'notification' parameter.")
             return
         }
-        
+
         let notification: ActitoNotification
-        
+
         do {
             notification = try ActitoNotification.fromJson(json: json)
         } catch {
             call.reject(error.localizedDescription)
             return
         }
-        
+
         onMainThread {
             guard let rootViewController = self.rootViewController else {
                 call.reject("Cannot present a notification with a nil root view controller.", nil)
                 return
             }
-            
+
             if notification.requiresViewController {
                 let navigationController = self.createNavigationController()
                 rootViewController.present(navigationController, animated: true) {
@@ -51,21 +51,21 @@ public class ActitoPushUIPlugin: CAPPlugin {
             }
         }
     }
-    
+
     @objc func presentAction(_ call: CAPPluginCall) {
         guard let notificationJson = call.getObject("notification") else {
             call.reject("Missing 'notification' parameter.")
             return
         }
-        
+
         guard let actionJson = call.getObject("action") else {
             call.reject("Missing 'action' parameter.")
             return
         }
-        
+
         let notification: ActitoNotification
         let action: ActitoNotification.Action
-        
+
         do {
             notification = try ActitoNotification.fromJson(json: notificationJson)
             action = try ActitoNotification.Action.fromJson(json: actionJson)
@@ -73,22 +73,22 @@ public class ActitoPushUIPlugin: CAPPlugin {
             call.reject(error.localizedDescription)
             return
         }
-        
+
         onMainThread {
             guard let rootViewController = self.rootViewController else {
                 call.reject("Cannot present a notification with a nil root view controller.", nil)
                 return
             }
-            
+
             Actito.shared.pushUI().presentAction(action, for: notification, in: rootViewController)
             call.resolve()
         }
     }
-    
+
     private func createNavigationController() -> UINavigationController {
         let navigationController = UINavigationController()
         let theme = Actito.shared.options?.theme(for: navigationController)
-        
+
         if let colorStr = theme?.backgroundColor {
             navigationController.view.backgroundColor = UIColor(hexString: colorStr)
         } else {
@@ -101,12 +101,12 @@ public class ActitoPushUIPlugin: CAPPlugin {
 
         return navigationController
     }
-    
+
     @objc private func onCloseClicked() {
         guard let rootViewController = rootViewController else {
             return
         }
-        
+
         rootViewController.dismiss(animated: true, completion: nil)
     }
 }
@@ -119,7 +119,7 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
             logger.error("Failed to emit the notification_will_present event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, didPresentNotification notification: ActitoNotification) {
         do {
             EventBroker.instance.dispatchEvent("notification_presented", data: try notification.toJson())
@@ -127,7 +127,7 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
             logger.error("Failed to emit the notification_presented event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, didFinishPresentingNotification notification: ActitoNotification) {
         do {
             EventBroker.instance.dispatchEvent("notification_finished_presenting", data: try notification.toJson())
@@ -135,7 +135,7 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
             logger.error("Failed to emit the notification_finished_presenting event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, didFailToPresentNotification notification: ActitoNotification) {
         do {
             EventBroker.instance.dispatchEvent("notification_failed_to_present", data: try notification.toJson())
@@ -143,7 +143,7 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
             logger.error("Failed to emit the notification_failed_to_present event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, didClickURL url: URL, in notification: ActitoNotification) {
         do {
             EventBroker.instance.dispatchEvent("notification_url_clicked", data: [
@@ -154,7 +154,7 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
             logger.error("Failed to emit the notification_url_clicked event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, willExecuteAction action: ActitoNotification.Action, for notification: ActitoNotification) {
         do {
             EventBroker.instance.dispatchEvent("action_will_execute", data: [
@@ -165,7 +165,7 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
             logger.error("Failed to emit the action_will_execute event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, didExecuteAction action: ActitoNotification.Action, for notification: ActitoNotification) {
         do {
             EventBroker.instance.dispatchEvent("action_executed", data: [
@@ -176,7 +176,7 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
             logger.error("Failed to emit the action_executed event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, didNotExecuteAction action: ActitoNotification.Action, for notification: ActitoNotification) {
         do {
             EventBroker.instance.dispatchEvent("action_not_executed", data: [
@@ -187,24 +187,24 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
             logger.error("Failed to emit the action_not_executed event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, didFailToExecuteAction action: ActitoNotification.Action, for notification: ActitoNotification, error: Error?) {
         do {
             var data: [String: Any] = [
                 "notification": try notification.toJson(),
                 "action": try action.toJson(),
             ]
-            
+
             if let error = error {
                 data["error"] = error.localizedDescription
             }
-            
+
             EventBroker.instance.dispatchEvent("action_failed_to_execute", data: data)
         } catch {
             logger.error("Failed to emit the action_failed_to_execute event.", error: error)
         }
     }
-    
+
     public func actito(_ actitoPushUI: ActitoPushUI, didReceiveCustomAction url: URL, in action: ActitoNotification.Action, for notification: ActitoNotification) {
         do {
             EventBroker.instance.dispatchEvent("custom_action_received", data: [

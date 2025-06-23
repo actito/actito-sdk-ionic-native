@@ -1,15 +1,15 @@
 package com.actito.push.ui.capacitor
 
 import android.net.Uri
+import com.actito.Actito
+import com.actito.models.ActitoNotification
+import com.actito.push.ui.ActitoPushUI
+import com.actito.push.ui.ktx.pushUI
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
 import com.getcapacitor.PluginMethod
 import com.getcapacitor.annotation.CapacitorPlugin
-import com.actito.Actito
-import com.actito.models.ActitoNotification
-import com.actito.push.ui.ActitoPushUI
-import com.actito.push.ui.ktx.pushUI
 
 @CapacitorPlugin(name = "ActitoPushUIPlugin")
 public class ActitoPushUIPlugin : Plugin(), ActitoPushUI.NotificationLifecycleListener {
