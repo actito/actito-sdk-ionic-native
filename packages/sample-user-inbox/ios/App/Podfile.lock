@@ -86,10 +86,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Actito: 93c5844668acb24df54e83131ca364abbe52d375
   Capacitor: 69c7f687aabb8d85e543497411e40638b5cc08c0
-  CapacitorActito: ed5f0fe6add95ee1f50990f3b194174cc71a1349
-  CapacitorActitoPush: 5de59d4e587fd9f77a950f7e46be73c595b2bd1f
-  CapacitorActitoPushUi: d1358476d2571503e3a8dedfb089419b5b3904cc
-  CapacitorActitoUserInbox: 139a1d83355121a3095c9e608b9b6f55650f7081
+  CapacitorActito: 7bdaddf754169b4b5c45e0d8b5089788bbebbdb8
+  CapacitorActitoPush: 6a9e9f599e47c59ac3d56ee0995571ec88b53469
+  CapacitorActitoPushUi: a9fb1cba2a1abd3739b9b3b0776cc8fd541edd04
+  CapacitorActitoUserInbox: aef1690b7cc4f0522f41ccd4265fcc755ac1ae8c
   CapacitorApp: f51c08c64df914fc934239fd1b3fc809d62a02f6
   CapacitorBrowser: 80345fe3b83664d2f953e9fe102a996df73ec809
   CapacitorCordova: f48c89f96c319101cd2f0ce8a2b7449b5fb8b3dd
