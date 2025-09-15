@@ -19,8 +19,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Capacitor", package: "capacitor-swift-pm"),
                 .product(name: "Cordova", package: "capacitor-swift-pm"),
-                .product(name: "ActitoKit", package: "actito-sdk-ios-in-house-releases", condition: nil),
-                .product(name: "ActitoScannablesKit", package: "actito-sdk-ios-in-house-releases", condition: nil),
+                .product(name: "ActitoKit", package: "actito-sdk-ios-in-house-releases"),
+                .product(name: "ActitoScannablesKit", package: "actito-sdk-ios-in-house-releases"),
             ],
             path: "ios/Sources/ActitoScannablesPlugin"),
     ]
