@@ -3,9 +3,15 @@ dist
 node_modules
 
 # iOS files
+xcuserdata/
+DerivedData/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
 Pods
+Package.resolved
 Build
-xcuserdata
+/.build
 
 # macOS files
 .DS_Store
