@@ -4,8 +4,8 @@ import Foundation
 
 @objc(ActitoPlugin)
 public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoPlugin" 
-    public let jsName = "ActitoPlugin" 
+    public let identifier = "ActitoPlugin"
+    public let jsName = "ActitoPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "isConfigured", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "isReady", returnType: CAPPluginReturnPromise),
@@ -34,7 +34,7 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "fetchUserData", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "updateUserData", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "logCustom", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
 
     public override func load() {
         addApplicationLaunchListener()

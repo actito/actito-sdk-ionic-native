@@ -5,8 +5,8 @@ import Foundation
 
 @objc(ActitoInboxPlugin)
 public class ActitoInboxPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoInboxPlugin" 
-    public let jsName = "ActitoInboxPlugin" 
+    public let identifier = "ActitoInboxPlugin"
+    public let jsName = "ActitoInboxPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "getItems", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "getBadge", returnType: CAPPluginReturnPromise),
@@ -16,7 +16,8 @@ public class ActitoInboxPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "markAllAsRead", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "remove", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "clear", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     public override func load() {
         addApplicationLaunchListener()
 

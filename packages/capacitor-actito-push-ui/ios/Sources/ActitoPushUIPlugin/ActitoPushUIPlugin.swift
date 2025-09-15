@@ -5,12 +5,13 @@ import Foundation
 
 @objc(ActitoPushUIPlugin)
 public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoPushUIPlugin" 
-    public let jsName = "ActitoPushUIPlugin" 
+    public let identifier = "ActitoPushUIPlugin"
+    public let jsName = "ActitoPushUIPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "presentNotification", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "presentAction", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     private var rootViewController: UIViewController? {
         get {
             UIApplication.shared.delegate?.window??.rootViewController

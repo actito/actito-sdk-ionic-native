@@ -5,15 +5,16 @@ import Foundation
 
 @objc(ActitoUserInboxPlugin)
 public class ActitoUserInboxPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoUserInboxPlugin" 
-    public let jsName = "ActitoUserInboxPlugin" 
+    public let identifier = "ActitoUserInboxPlugin"
+    public let jsName = "ActitoUserInboxPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "parseResponseFromJson", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "parseResponseFromString", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "open", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "markAsRead", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "remove", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     @objc func parseResponseFromJson(_ call: CAPPluginCall) {
         guard let json = call.getObject("json") else {
             call.reject("Missing 'json' parameter.")

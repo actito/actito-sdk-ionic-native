@@ -5,15 +5,16 @@ import Foundation
 
 @objc(ActitoScannablesPlugin)
 public class ActitoScannablesPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoScannablesPlugin" 
-    public let jsName = "ActitoScannablesPlugin" 
+    public let identifier = "ActitoScannablesPlugin"
+    public let jsName = "ActitoScannablesPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "canStartNfcScannableSession", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "startScannableSession", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "startNfcScannableSession", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "startQrCodeScannableSession", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "fetch", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     private var rootViewController: UIViewController? {
         get {
             UIApplication.shared.delegate?.window??.rootViewController

@@ -5,8 +5,8 @@ import Foundation
 
 @objc(ActitoPushPlugin)
 public class ActitoPushPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoPushPlugin" 
-    public let jsName = "ActitoPushPlugin" 
+    public let identifier = "ActitoPushPlugin"
+    public let jsName = "ActitoPushPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "setAuthorizationOptions", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "setCategoryOptions", returnType: CAPPluginReturnPromise),
@@ -22,7 +22,8 @@ public class ActitoPushPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "presentPermissionRationale", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "requestPermission", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "openAppSettings", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     private let notificationCenter = UNUserNotificationCenter.current()
 
     public override func load() {

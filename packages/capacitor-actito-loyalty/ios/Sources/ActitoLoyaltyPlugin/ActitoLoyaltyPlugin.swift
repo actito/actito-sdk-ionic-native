@@ -5,13 +5,14 @@ import Foundation
 
 @objc(ActitoLoyaltyPlugin)
 public class ActitoLoyaltyPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoLoyaltyPlugin" 
-    public let jsName = "ActitoLoyaltyPlugin" 
+    public let identifier = "ActitoLoyaltyPlugin"
+    public let jsName = "ActitoLoyaltyPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "fetchPassBySerial", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "fetchPassByBarcode", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "present", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     private var rootViewController: UIViewController? {
         get {
             UIApplication.shared.delegate?.window??.rootViewController

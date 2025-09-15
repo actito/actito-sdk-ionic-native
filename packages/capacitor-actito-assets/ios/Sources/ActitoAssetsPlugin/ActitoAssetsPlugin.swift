@@ -5,11 +5,12 @@ import Foundation
 
 @objc(ActitoAssetsPlugin)
 public class ActitoAssetsPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoAssetsPlugin" 
-    public let jsName = "ActitoAssetsPlugin" 
+    public let identifier = "ActitoAssetsPlugin"
+    public let jsName = "ActitoAssetsPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "fetch", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     @objc func fetch(_ call: CAPPluginCall) {
         guard let group = call.getString("group") else {
             call.reject("Missing 'group' parameter.")

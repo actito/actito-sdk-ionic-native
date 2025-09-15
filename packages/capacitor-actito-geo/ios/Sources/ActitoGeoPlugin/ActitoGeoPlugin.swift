@@ -8,8 +8,8 @@ private let REQUESTED_LOCATION_ALWAYS_KEY = "com.actito.geo.capacitor.requested_
 
 @objc(ActitoGeoPlugin)
 public class ActitoGeoPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoGeoPlugin" 
-    public let jsName = "ActitoGeoPlugin" 
+    public let identifier = "ActitoGeoPlugin"
+    public let jsName = "ActitoGeoPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "hasLocationServicesEnabled", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "hasBluetoothEnabled", returnType: CAPPluginReturnPromise),
@@ -22,7 +22,8 @@ public class ActitoGeoPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "presentPermissionRationale", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "requestPermission", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "openAppSettings", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     private let locationManager = CLLocationManager()
     private var requestedPermission: PermissionGroup?
     private var requestedPermissionCall: CAPPluginCall?

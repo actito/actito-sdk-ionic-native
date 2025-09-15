@@ -5,12 +5,13 @@ import Foundation
 
 @objc(ActitoInAppMessagingPlugin)
 public class ActitoInAppMessagingPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "ActitoInAppMessagingPlugin" 
-    public let jsName = "ActitoInAppMessagingPlugin" 
+    public let identifier = "ActitoInAppMessagingPlugin"
+    public let jsName = "ActitoInAppMessagingPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "hasMessagesSuppressed", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "setMessagesSuppressed", returnType: CAPPluginReturnPromise),
-    ] 
+    ]
+
     public override func load() {
         addApplicationLaunchListener()
 
