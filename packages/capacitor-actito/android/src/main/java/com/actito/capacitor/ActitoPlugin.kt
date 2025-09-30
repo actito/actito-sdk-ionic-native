@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import com.actito.Actito
 import com.actito.ActitoCallback
+import com.actito.ActitoIntentReceiver
 import com.actito.ktx.device
 import com.actito.ktx.events
 import com.actito.models.ActitoApplication
@@ -27,7 +28,10 @@ public class ActitoPlugin : Plugin() {
         logger.hasDebugLoggingEnabled = Actito.options?.debugLoggingEnabled ?: false
 
         EventBroker.setup(this::notifyListeners)
-        Actito.intentReceiver = ActitoPluginIntentReceiver::class.java
+
+        if (Actito.intentReceiver == ActitoIntentReceiver::class.java) {
+            Actito.intentReceiver = ActitoPluginIntentReceiver::class.java
+        }
 
         val intent = activity?.intent
         if (intent != null) handleOnNewIntent(intent)

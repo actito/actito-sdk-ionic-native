@@ -8,7 +8,7 @@ import com.actito.push.models.ActitoSystemNotification
 import com.actito.push.models.ActitoUnknownNotification
 import com.getcapacitor.JSObject
 
-internal class ActitoPushPluginIntentReceiver : ActitoPushIntentReceiver() {
+public open class ActitoPushPluginIntentReceiver : ActitoPushIntentReceiver() {
 
     override fun onNotificationReceived(
         context: Context,

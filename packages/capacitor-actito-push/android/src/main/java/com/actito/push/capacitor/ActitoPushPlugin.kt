@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.actito.Actito
 import com.actito.ActitoCallback
+import com.actito.push.ActitoPushIntentReceiver
 import com.actito.push.ktx.push
 import com.actito.push.models.ActitoPushSubscription
 import com.getcapacitor.JSObject
@@ -54,7 +55,10 @@ public class ActitoPushPlugin : Plugin() {
         logger.hasDebugLoggingEnabled = Actito.options?.debugLoggingEnabled ?: false
 
         EventBroker.setup(this::notifyListeners)
-        Actito.push().intentReceiver = ActitoPushPluginIntentReceiver::class.java
+
+        if (Actito.push().intentReceiver == ActitoPushIntentReceiver::class.java) {
+            Actito.push().intentReceiver = ActitoPushPluginIntentReceiver::class.java
+        }
 
         onMainThread {
             Actito.push().observableAllowedUI.removeObserver(allowedUIObserver)
