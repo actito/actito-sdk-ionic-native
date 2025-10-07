@@ -2,7 +2,10 @@ import type { PluginListenerHandle } from '@capacitor/core';
 import type { ActitoNotification, ActitoNotificationAction } from 'capacitor-actito';
 
 import type { PushPermissionStatus } from './enums';
+import type { ActitoAuthorizationOptions } from './models/actito-authorization-options';
+import type { ActitoCategoryOptions } from './models/actito-category-options';
 import type { ActitoNotificationDeliveryMechanism } from './models/actito-notification-delivery-mechanism';
+import type { ActitoPresentationOptions } from './models/actito-presentation-options';
 import type { ActitoPushSubscription } from './models/actito-push-subscription';
 import type { ActitoSystemNotification } from './models/actito-system-notification';
 import type { ActitoTransport } from './models/actito-transport';
@@ -23,7 +26,7 @@ export class ActitoPush {
    * @returns {Promise<void>} - A promise that resolves when the authorization
    * options have been successfully set.
    */
-  public static async setAuthorizationOptions(options: string[]): Promise<void> {
+  public static async setAuthorizationOptions(options: ActitoAuthorizationOptions[]): Promise<void> {
     await NativePlugin.setAuthorizationOptions({ options });
   }
 
@@ -36,7 +39,7 @@ export class ActitoPush {
    * @returns {Promise<void>} - A promise that resolves when the category options
    * have been successfully set.
    */
-  public static async setCategoryOptions(options: string[]): Promise<void> {
+  public static async setCategoryOptions(options: ActitoCategoryOptions[]): Promise<void> {
     await NativePlugin.setCategoryOptions({ options });
   }
 
@@ -50,7 +53,7 @@ export class ActitoPush {
    * @returns {Promise<void>} - A promise that resolves when the presentation
    * options have been successfully set.
    */
-  public static async setPresentationOptions(options: string[]): Promise<void> {
+  public static async setPresentationOptions(options: ActitoPresentationOptions[]): Promise<void> {
     await NativePlugin.setPresentationOptions({ options });
   }
 
