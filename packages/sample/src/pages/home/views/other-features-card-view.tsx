@@ -1,15 +1,11 @@
 import { IonCard, IonIcon, IonItem, IonLabel, IonText } from '@ionic/react';
-import { bulbOutline, folderOutline, qrCodeOutline } from 'ionicons/icons';
+import { bulbOutline, folderOutline } from 'ionicons/icons';
 import type { FC } from 'react';
 import '../../../styles/index.css';
 import { useHistory } from 'react-router';
 
 export const OtherFeaturesCardView: FC = () => {
   const history = useHistory();
-
-  function onScannablesClicked() {
-    history.push('/scannables');
-  }
 
   function onAssetsClicked() {
     history.push('/assets');
@@ -26,14 +22,6 @@ export const OtherFeaturesCardView: FC = () => {
       </div>
 
       <IonCard className="ion-card-margin">
-        <IonItem detail={true} lines="none" button onClick={onScannablesClicked}>
-          <IonIcon icon={qrCodeOutline} size="small" />
-
-          <IonLabel className="label-with-icon">Scannables</IonLabel>
-        </IonItem>
-
-        <div className="divider-horizontal-margin" />
-
         <IonItem detail={true} lines="none" button onClick={onAssetsClicked}>
           <IonIcon icon={folderOutline} size="small" />
 

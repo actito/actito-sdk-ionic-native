@@ -23,8 +23,7 @@ let package = Package(
         .package(name: "CapacitorActitoInbox", path: "../../../../capacitor-actito-inbox"),
         .package(name: "CapacitorActitoLoyalty", path: "../../../../capacitor-actito-loyalty"),
         .package(name: "CapacitorActitoPush", path: "../../../../capacitor-actito-push"),
-        .package(name: "CapacitorActitoPushUi", path: "../../../../capacitor-actito-push-ui"),
-        .package(name: "CapacitorActitoScannables", path: "../../../../capacitor-actito-scannables")
+        .package(name: "CapacitorActitoPushUi", path: "../../../../capacitor-actito-push-ui")
     ],
     targets: [
         .target(
@@ -43,8 +42,7 @@ let package = Package(
                 .product(name: "CapacitorActitoInbox", package: "CapacitorActitoInbox"),
                 .product(name: "CapacitorActitoLoyalty", package: "CapacitorActitoLoyalty"),
                 .product(name: "CapacitorActitoPush", package: "CapacitorActitoPush"),
-                .product(name: "CapacitorActitoPushUi", package: "CapacitorActitoPushUi"),
-                .product(name: "CapacitorActitoScannables", package: "CapacitorActitoScannables")
+                .product(name: "CapacitorActitoPushUi", package: "CapacitorActitoPushUi")
             ]
         )
     ]
