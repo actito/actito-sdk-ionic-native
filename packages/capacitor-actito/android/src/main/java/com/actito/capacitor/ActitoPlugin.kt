@@ -4,14 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import com.actito.Actito
 import com.actito.ActitoCallback
+import com.actito.ActitoEventData
 import com.actito.ActitoIntentReceiver
+import com.actito.internal.ktx.toEventData
 import com.actito.ktx.device
 import com.actito.ktx.events
 import com.actito.models.ActitoApplication
 import com.actito.models.ActitoDoNotDisturb
 import com.actito.models.ActitoDynamicLink
-import com.actito.models.ActitoEvent
-import com.actito.models.ActitoEventData
 import com.actito.models.ActitoNotification
 import com.actito.models.ActitoUserData
 import com.getcapacitor.JSArray
@@ -489,7 +489,7 @@ public class ActitoPlugin : Plugin() {
         val data: ActitoEventData?
 
         try {
-            data = call.getObject("data", null)?.let { ActitoEvent.createData(it) }
+            data = call.getObject("data", null)?.toEventData()
         } catch (e: Exception) {
             call.reject(e.localizedMessage)
             return
