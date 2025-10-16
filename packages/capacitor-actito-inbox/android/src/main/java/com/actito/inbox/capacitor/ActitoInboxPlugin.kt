@@ -79,8 +79,15 @@ public class ActitoInboxPlugin : Plugin() {
 
     @PluginMethod
     public fun refresh(call: PluginCall) {
-        Actito.inbox().refresh()
-        call.resolve()
+        Actito.inbox().refresh(object : ActitoCallback<Unit> {
+            override fun onSuccess(result: Unit) {
+                call.resolve()
+            }
+
+            override fun onFailure(e: Exception) {
+                call.reject(e.localizedMessage)
+            }
+        })
     }
 
     @PluginMethod
