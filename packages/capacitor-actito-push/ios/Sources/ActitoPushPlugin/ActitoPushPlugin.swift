@@ -26,6 +26,7 @@ public class ActitoPushPlugin: CAPPlugin, CAPBridgedPlugin {
 
     private let notificationCenter = UNUserNotificationCenter.current()
 
+    @MainActor
     public override func load() {
         addApplicationLaunchListener()
 
@@ -79,8 +80,10 @@ public class ActitoPushPlugin: CAPPlugin, CAPBridgedPlugin {
             }
         }
 
-        Actito.shared.push().authorizationOptions = authorizationOptions
-        call.resolve()
+        DispatchQueue.main.async {
+            Actito.shared.push().authorizationOptions = authorizationOptions
+            call.resolve()
+        }
     }
 
     @objc func setCategoryOptions(_ call: CAPPluginCall) {
@@ -117,8 +120,10 @@ public class ActitoPushPlugin: CAPPlugin, CAPBridgedPlugin {
             }
         }
 
-        Actito.shared.push().categoryOptions = categoryOptions
-        call.resolve()
+        DispatchQueue.main.async {
+            Actito.shared.push().categoryOptions = categoryOptions
+            call.resolve()
+        }
     }
 
     @objc func setPresentationOptions(_ call: CAPPluginCall) {
@@ -153,62 +158,76 @@ public class ActitoPushPlugin: CAPPlugin, CAPBridgedPlugin {
             }
         }
 
-        Actito.shared.push().presentationOptions = presentationOptions
-        call.resolve()
+        DispatchQueue.main.async {
+            Actito.shared.push().presentationOptions = presentationOptions
+            call.resolve()
+        }
     }
 
     @objc func hasRemoteNotificationsEnabled(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.push().hasRemoteNotificationsEnabled
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.push().hasRemoteNotificationsEnabled
+            ])
+        }
     }
 
     @objc func getTransport(_ call: CAPPluginCall) {
-        var response: PluginCallResultData = [:]
-        if let transport = Actito.shared.push().transport?.rawValue {
-            response["result"] = transport
-        }
-
-        call.resolve(response)
-    }
-
-    @objc func getSubscription(_ call: CAPPluginCall) {
-        do {
+        DispatchQueue.main.async {
             var response: PluginCallResultData = [:]
-            if let subscription = Actito.shared.push().subscription {
-                response["result"] = try subscription.toJson()
+            if let transport = Actito.shared.push().transport?.rawValue {
+                response["result"] = transport
             }
 
             call.resolve(response)
-        } catch {
-            call.reject(error.localizedDescription)
+        }
+    }
+
+    @objc func getSubscription(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            do {
+                var response: PluginCallResultData = [:]
+                if let subscription = Actito.shared.push().subscription {
+                    response["result"] = try subscription.toJson()
+                }
+
+                call.resolve(response)
+            } catch {
+                call.reject(error.localizedDescription)
+            }
         }
     }
 
     @objc func allowedUI(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.push().allowedUI
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.push().allowedUI
+            ])
+        }
     }
 
     @objc func enableRemoteNotifications(_ call: CAPPluginCall) {
-        Actito.shared.push().enableRemoteNotifications { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.push().enableRemoteNotifications { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func disableRemoteNotifications(_ call: CAPPluginCall) {
-        Actito.shared.push().disableRemoteNotifications { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.push().disableRemoteNotifications { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -234,15 +253,17 @@ public class ActitoPushPlugin: CAPPlugin, CAPBridgedPlugin {
                 return
             }
 
-            let authorizationOptions = Actito.shared.push().authorizationOptions
+            DispatchQueue.main.async {
+                let authorizationOptions = Actito.shared.push().authorizationOptions
 
-            self.notificationCenter.requestAuthorization(options: authorizationOptions) { (granted, error) in
-                if error == nil {
-                    call.resolve(granted ? ["result": PermissionStatus.granted.rawValue] : ["result": PermissionStatus.denied.rawValue])
-                    return
+                self.notificationCenter.requestAuthorization(options: authorizationOptions) { (granted, error) in
+                    if error == nil {
+                        call.resolve(granted ? ["result": PermissionStatus.granted.rawValue] : ["result": PermissionStatus.denied.rawValue])
+                        return
+                    }
+
+                    call.reject("Unable to request notifications permission.", error?.localizedDescription)
                 }
-
-                call.reject("Unable to request notifications permission.", error?.localizedDescription)
             }
         }
     }
@@ -373,7 +394,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
         EventBroker.instance.dispatchEvent("notification_settings_changed", data: ["granted": granted])
     }
 
-    public func actito(_ actitoPush: any ActitoPush, didChangeSubscription subscription: ActitoPushSubscription?) {
+    public func actito(_ actitoPush: ActitoPush, didChangeSubscription subscription: ActitoPushSubscription?) {
         do {
             EventBroker.instance.dispatchEvent("subscription_changed", data: try subscription?.toJson())
         } catch {
@@ -420,6 +441,7 @@ extension ActitoPushPlugin {
         )
     }
 
+    @MainActor
     @objc private func didFinishLaunching() {
         removeApplicationLaunchListener()
 

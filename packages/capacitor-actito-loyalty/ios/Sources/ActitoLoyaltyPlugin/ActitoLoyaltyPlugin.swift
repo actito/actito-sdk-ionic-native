@@ -25,18 +25,20 @@ public class ActitoLoyaltyPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.loyalty().fetchPass(serial: serial) { result in
-            switch result {
-            case let .success(pass):
-                do {
-                    call.resolve([
-                        "result": try pass.toJson()
-                    ])
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.loyalty().fetchPass(serial: serial) { result in
+                switch result {
+                case let .success(pass):
+                    do {
+                        call.resolve([
+                            "result": try pass.toJson()
+                        ])
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }
@@ -47,18 +49,20 @@ public class ActitoLoyaltyPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.loyalty().fetchPass(barcode: barcode) { result in
-            switch result {
-            case let .success(pass):
-                do {
-                    call.resolve([
-                        "result": try pass.toJson()
-                    ])
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.loyalty().fetchPass(barcode: barcode) { result in
+                switch result {
+                case let .success(pass):
+                    do {
+                        call.resolve([
+                            "result": try pass.toJson()
+                        ])
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }

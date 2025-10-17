@@ -36,6 +36,7 @@ public class ActitoGeoPlugin: CAPPlugin, CAPBridgedPlugin {
         return CLLocationManager.authorizationStatus()
     }
 
+    @MainActor
     public override func load() {
         addApplicationLaunchListener()
 
@@ -46,45 +47,57 @@ public class ActitoGeoPlugin: CAPPlugin, CAPBridgedPlugin {
     }
 
     @objc func hasLocationServicesEnabled(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.geo().hasLocationServicesEnabled
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.geo().hasLocationServicesEnabled
+            ])
+        }
     }
 
     @objc func hasBluetoothEnabled(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.geo().hasBluetoothEnabled
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.geo().hasBluetoothEnabled
+            ])
+        }
     }
 
     @objc func getMonitoredRegions(_ call: CAPPluginCall) {
-        do {
-            call.resolve([
-                "result": try Actito.shared.geo().monitoredRegions.map { try $0.toJson() }
-            ])
-        } catch {
-            call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            do {
+                call.resolve([
+                    "result": try Actito.shared.geo().monitoredRegions.map { try $0.toJson() }
+                ])
+            } catch {
+                call.reject(error.localizedDescription)
+            }
         }
     }
 
     @objc func getEnteredRegions(_ call: CAPPluginCall) {
-        do {
-            call.resolve([
-                "result": try Actito.shared.geo().enteredRegions.map { try $0.toJson() }
-            ])
-        } catch {
-            call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            do {
+                call.resolve([
+                    "result": try Actito.shared.geo().enteredRegions.map { try $0.toJson() }
+                ])
+            } catch {
+                call.reject(error.localizedDescription)
+            }
         }
     }
 
     @objc func enableLocationUpdates(_ call: CAPPluginCall) {
-        Actito.shared.geo().enableLocationUpdates()
-        call.resolve()
+        DispatchQueue.main.async {
+            Actito.shared.geo().enableLocationUpdates()
+            call.resolve()
+        }
     }
 
     @objc func disableLocationUpdates(_ call: CAPPluginCall) {
-        Actito.shared.geo().disableLocationUpdates()
-        call.resolve()
+        DispatchQueue.main.async {
+            Actito.shared.geo().disableLocationUpdates()
+            call.resolve()
+        }
     }
 
     @objc func checkPermissionStatus(_ call: CAPPluginCall) {
@@ -374,6 +387,7 @@ extension ActitoGeoPlugin {
         )
     }
 
+    @MainActor
     @objc private func didFinishLaunching() {
         removeApplicationLaunchListener()
 

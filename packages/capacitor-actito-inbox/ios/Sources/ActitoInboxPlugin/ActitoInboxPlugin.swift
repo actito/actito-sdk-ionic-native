@@ -18,6 +18,7 @@ public class ActitoInboxPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "clear", returnType: CAPPluginReturnPromise),
     ]
 
+    @MainActor
     public override func load() {
         addApplicationLaunchListener()
 
@@ -26,19 +27,23 @@ public class ActitoInboxPlugin: CAPPlugin, CAPBridgedPlugin {
     }
 
     @objc func getItems(_ call: CAPPluginCall) {
-        do {
-            call.resolve([
-                "result": try Actito.shared.inbox().items.map { try $0.toJson() }
-            ])
-        } catch {
-            call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            do {
+                call.resolve([
+                    "result": try Actito.shared.inbox().items.map { try $0.toJson() }
+                ])
+            } catch {
+                call.reject(error.localizedDescription)
+            }
         }
     }
 
     @objc func getBadge(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.inbox().badge
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.inbox().badge
+            ])
+        }
     }
 
     @objc func refresh(_ call: CAPPluginCall) {
@@ -69,18 +74,20 @@ public class ActitoInboxPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.inbox().open(item) { result in
-            switch result {
-            case let .success(notification):
-                do {
-                    call.resolve([
-                        "result": try notification.toJson()
-                    ])
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.inbox().open(item) { result in
+                switch result {
+                case let .success(notification):
+                    do {
+                        call.resolve([
+                            "result": try notification.toJson()
+                        ])
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }
@@ -100,23 +107,27 @@ public class ActitoInboxPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.inbox().markAsRead(item) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.inbox().markAsRead(item) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func markAllAsRead(_ call: CAPPluginCall) {
-        Actito.shared.inbox().markAllAsRead { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.inbox().markAllAsRead { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -136,23 +147,27 @@ public class ActitoInboxPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.inbox().remove(item) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.inbox().remove(item) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func clear(_ call: CAPPluginCall) {
-        Actito.shared.inbox().clear { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.inbox().clear { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -194,6 +209,7 @@ extension ActitoInboxPlugin {
         )
     }
 
+    @MainActor
     @objc private func didFinishLaunching() {
         removeApplicationLaunchListener()
 
