@@ -42,8 +42,16 @@ public class ActitoInboxPlugin: CAPPlugin, CAPBridgedPlugin {
     }
 
     @objc func refresh(_ call: CAPPluginCall) {
-        Actito.shared.inbox().refresh()
-        call.resolve()
+        DispatchQueue.main.async {
+            Actito.shared.inbox().refresh { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
+            }
+        }
     }
 
     @objc func open(_ call: CAPPluginCall) {
