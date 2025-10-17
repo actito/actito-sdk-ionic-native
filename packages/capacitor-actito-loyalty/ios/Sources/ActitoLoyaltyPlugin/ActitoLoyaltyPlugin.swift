@@ -89,6 +89,7 @@ public class ActitoLoyaltyPlugin: CAPPlugin, CAPBridgedPlugin {
             }
 
             Actito.shared.loyalty().present(pass: pass, in: rootViewController)
+            call.resolve()
         }
     }
 }
