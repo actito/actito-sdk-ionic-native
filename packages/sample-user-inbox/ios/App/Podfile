@@ -31,5 +31,5 @@ target 'App' do
 end
 
 target 'NotificationServiceExtension' do
-  pod 'Actito/ActitoNotificationServiceExtensionKit', '5.0.0-canary.1'
+  pod 'Actito/ActitoNotificationServiceExtensionKit', '5.0.0-canary.5'
 end
