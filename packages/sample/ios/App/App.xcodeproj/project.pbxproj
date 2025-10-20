@@ -571,7 +571,7 @@
 			repositoryURL = "https://github.com/actito/actito-sdk-ios-in-house-releases";
 			requirement = {
 				kind = exactVersion;
-				version = "5.0.0-canary.4";
+				version = "5.0.0-canary.5";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
