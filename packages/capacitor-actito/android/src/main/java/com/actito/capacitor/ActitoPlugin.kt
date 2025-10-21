@@ -32,9 +32,6 @@ public class ActitoPlugin : Plugin() {
         if (Actito.intentReceiver == ActitoIntentReceiver::class.java) {
             Actito.intentReceiver = ActitoPluginIntentReceiver::class.java
         }
-
-        val intent = activity?.intent
-        if (intent != null) handleOnNewIntent(intent)
     }
 
     override fun handleOnNewIntent(intent: Intent) {
