@@ -1,5 +1,8 @@
 {
 	"appId": "com.actito.sample.app",
 	"appName": "sample",
-	"webDir": "build"
+	"webDir": "build",
+	"android": {
+		"adjustMarginsForEdgeToEdge": "force"
+	}
 }
