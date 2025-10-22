@@ -40,7 +40,7 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
     public override func load() {
         addApplicationLaunchListener()
 
-        EventBroker.instance.setup { self.notifyListeners($0, data: $1) }
+        EventBroker.instance.setup { self.notifyListeners($0, data: $1, retainUntilConsumed: $2) }
         Actito.shared.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleUrlOpened(notification:)), name: .capacitorOpenURL, object: nil)
@@ -67,7 +67,7 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
                 return
             }
 
-            EventBroker.instance.dispatchEvent("url_opened", data: ["url": url.absoluteString])
+            EventBroker.instance.dispatchEvent("url_opened", data: ["url": url.absoluteString], retainUntilConsumed: true)
         }
     }
 
