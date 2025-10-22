@@ -30,7 +30,7 @@ public class ActitoPushPlugin: CAPPlugin, CAPBridgedPlugin {
     public override func load() {
         addApplicationLaunchListener()
 
-        EventBroker.instance.setup { self.notifyListeners($0, data: $1) }
+        EventBroker.instance.setup { self.notifyListeners($0, data: $1, retainUntilConsumed: $2) }
         Actito.shared.push().delegate = self
     }
 
@@ -338,7 +338,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
 
     public func actito(_ actitoPush: ActitoPush, didOpenNotification notification: ActitoNotification) {
         do {
-            EventBroker.instance.dispatchEvent("notification_opened", data: try notification.toJson())
+            EventBroker.instance.dispatchEvent("notification_opened", data: try notification.toJson(), retainUntilConsumed: true)
         } catch {
             logger.error("Failed to emit the notification_opened event.", error: error)
         }
@@ -353,7 +353,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
             return (key, $0.value)
         })
 
-        EventBroker.instance.dispatchEvent("unknown_notification_opened", data: data)
+        EventBroker.instance.dispatchEvent("unknown_notification_opened", data: data, retainUntilConsumed: true)
     }
 
     public func actito(_ actitoPush: ActitoPush, didOpenAction action: ActitoNotification.Action, for notification: ActitoNotification) {
@@ -363,7 +363,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
                 "action": try action.toJson(),
             ]
 
-            EventBroker.instance.dispatchEvent("notification_action_opened", data: data)
+            EventBroker.instance.dispatchEvent("notification_action_opened", data: data, retainUntilConsumed: true)
         } catch {
             logger.error("Failed to emit the notification_action_opened event.", error: error)
         }
@@ -387,7 +387,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
             data["responseText"] = responseText
         }
 
-        EventBroker.instance.dispatchEvent("unknown_notification_action_opened", data: data)
+        EventBroker.instance.dispatchEvent("unknown_notification_action_opened", data: data, retainUntilConsumed: true)
     }
 
     public func actito(_ actitoPush: ActitoPush, didChangeNotificationSettings granted: Bool) {
