@@ -1,33 +1,33 @@
 PODS:
-  - Actito/ActitoKit (5.0.0-canary.5):
+  - Actito/ActitoKit (5.0.0-beta.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoNotificationServiceExtensionKit (5.0.0-canary.5)
-  - Actito/ActitoPushKit (5.0.0-canary.5):
+  - Actito/ActitoNotificationServiceExtensionKit (5.0.0-beta.1)
+  - Actito/ActitoPushKit (5.0.0-beta.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoPushUIKit (5.0.0-canary.5):
+  - Actito/ActitoPushUIKit (5.0.0-beta.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoUserInboxKit (5.0.0-canary.5):
+  - Actito/ActitoUserInboxKit (5.0.0-beta.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoUtilitiesKit (5.0.0-canary.5)
+  - Actito/ActitoUtilitiesKit (5.0.0-beta.1)
   - Capacitor (6.1.2):
     - CapacitorCordova
   - CapacitorActito (5.0.0-canary.1):
-    - Actito/ActitoKit (= 5.0.0-canary.5)
-    - Actito/ActitoUtilitiesKit (= 5.0.0-canary.5)
+    - Actito/ActitoKit (= 5.0.0-beta.1)
+    - Actito/ActitoUtilitiesKit (= 5.0.0-beta.1)
     - Capacitor
   - CapacitorActitoPush (5.0.0-canary.1):
-    - Actito/ActitoKit (= 5.0.0-canary.5)
-    - Actito/ActitoPushKit (= 5.0.0-canary.5)
-    - Actito/ActitoUtilitiesKit (= 5.0.0-canary.5)
+    - Actito/ActitoKit (= 5.0.0-beta.1)
+    - Actito/ActitoPushKit (= 5.0.0-beta.1)
+    - Actito/ActitoUtilitiesKit (= 5.0.0-beta.1)
     - Capacitor
   - CapacitorActitoPushUi (5.0.0-canary.1):
-    - Actito/ActitoKit (= 5.0.0-canary.5)
-    - Actito/ActitoPushUIKit (= 5.0.0-canary.5)
-    - Actito/ActitoUtilitiesKit (= 5.0.0-canary.5)
+    - Actito/ActitoKit (= 5.0.0-beta.1)
+    - Actito/ActitoPushUIKit (= 5.0.0-beta.1)
+    - Actito/ActitoUtilitiesKit (= 5.0.0-beta.1)
     - Capacitor
   - CapacitorActitoUserInbox (5.0.0-canary.1):
-    - Actito/ActitoKit (= 5.0.0-canary.5)
-    - Actito/ActitoUserInboxKit (= 5.0.0-canary.5)
+    - Actito/ActitoKit (= 5.0.0-beta.1)
+    - Actito/ActitoUserInboxKit (= 5.0.0-beta.1)
     - Capacitor
   - CapacitorApp (6.0.1):
     - Capacitor
@@ -42,7 +42,7 @@ PODS:
     - Capacitor
 
 DEPENDENCIES:
-  - Actito/ActitoNotificationServiceExtensionKit (= 5.0.0-canary.5)
+  - Actito/ActitoNotificationServiceExtensionKit (= 5.0.0-beta.1)
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - CapacitorActito (from `../../../capacitor-actito`)
   - CapacitorActitoPush (from `../../../capacitor-actito-push`)
@@ -56,7 +56,7 @@ DEPENDENCIES:
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
 
 SPEC REPOS:
-  "git@github.com:actito/actito-cocoapods-specs.git":
+  trunk:
     - Actito
 
 EXTERNAL SOURCES:
@@ -84,12 +84,12 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/status-bar"
 
 SPEC CHECKSUMS:
-  Actito: 964e89ee7afb3f99c0318002996899049a3980ba
+  Actito: 643861951daa72306f170a6a3eb4ce1764fb0a01
   Capacitor: 69c7f687aabb8d85e543497411e40638b5cc08c0
-  CapacitorActito: bed84559f7bac2e91623db30b71a088806603f3b
-  CapacitorActitoPush: 6c4ae1e91ba8045e9633ea744798449ab6bc7a59
-  CapacitorActitoPushUi: 62dbff6dd487a58f7673100aea6511eba3dd48ba
-  CapacitorActitoUserInbox: 506ac47b3883aa5be70dbc202d61ba847b98b6e2
+  CapacitorActito: 8b48be916786938934d6b895e699f723fdbd7249
+  CapacitorActitoPush: 00cb2b0de1218442f8167e8e11b98e7681479d78
+  CapacitorActitoPushUi: 112bed61c8c59480741cb5eda75f3dc0496b88af
+  CapacitorActitoUserInbox: 82cfb6ec2fd40104f89f05183efd49c9a3f645da
   CapacitorApp: f51c08c64df914fc934239fd1b3fc809d62a02f6
   CapacitorBrowser: 80345fe3b83664d2f953e9fe102a996df73ec809
   CapacitorCordova: f48c89f96c319101cd2f0ce8a2b7449b5fb8b3dd
@@ -97,6 +97,6 @@ SPEC CHECKSUMS:
   CapacitorKeyboard: 5bf4458dd989b56a60ea15c92cbca5fbfae6e9f9
   CapacitorStatusBar: 9ed7f06318fd436917072a9bf60fda56d12c8bdb
 
-PODFILE CHECKSUM: 2b85e8e83d95eb619ec606eb9f7bfa1edf719cc5
+PODFILE CHECKSUM: 175e65c8a334ecf82af5148a5a89747bac30a1f3
 
 COCOAPODS: 1.16.2

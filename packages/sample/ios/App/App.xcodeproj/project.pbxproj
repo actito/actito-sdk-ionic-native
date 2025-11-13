@@ -221,7 +221,7 @@
 			mainGroup = 504EC2FB1FED79650016851F;
 			packageReferences = (
 				E5525A412E7863A00078CBFD /* XCLocalSwiftPackageReference "CapApp-SPM" */,
-				E5525A452E7864990078CBFD /* XCRemoteSwiftPackageReference "actito-sdk-ios-in-house-releases" */,
+				E53778362EC5D3A900241FA5 /* XCRemoteSwiftPackageReference "actito-sdk-ios" */,
 			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
@@ -566,6 +566,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E53778362EC5D3A900241FA5 /* XCRemoteSwiftPackageReference "actito-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Actito/actito-sdk-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = "5.0.0-beta.1";
+			};
+		};
 		E5525A452E7864990078CBFD /* XCRemoteSwiftPackageReference "actito-sdk-ios-in-house-releases" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/actito/actito-sdk-ios-in-house-releases";
