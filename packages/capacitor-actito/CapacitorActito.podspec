@@ -1,7 +1,7 @@
 require 'json'
 
 package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
-actito_version = '5.0.0-canary.5'
+actito_version = '5.0.0-beta.1'
 
 Pod::Spec.new do |s|
   s.name = 'CapacitorActito'

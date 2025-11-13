@@ -58,7 +58,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.7.0'
 
-    def actito_version = '5.0.0-canary.3'
+    def actito_version = '5.0.0-beta.1'
     api "com.actito:actito:$actito_version"
     api "com.actito:actito-in-app-messaging:$actito_version"
     implementation "com.actito:actito-utilities:$actito_version"
