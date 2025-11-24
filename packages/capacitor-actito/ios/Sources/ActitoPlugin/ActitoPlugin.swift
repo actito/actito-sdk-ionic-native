@@ -36,10 +36,11 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "logCustom", returnType: CAPPluginReturnPromise),
     ]
 
+    @MainActor
     public override func load() {
         addApplicationLaunchListener()
 
-        EventBroker.instance.setup { self.notifyListeners($0, data: $1) }
+        EventBroker.instance.setup { self.notifyListeners($0, data: $1, retainUntilConsumed: $2) }
         Actito.shared.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleUrlOpened(notification:)), name: .capacitorOpenURL, object: nil)
@@ -57,15 +58,17 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        if Actito.shared.handleTestDeviceUrl(url) {
-            return
-        }
+        DispatchQueue.main.async {
+            if Actito.shared.handleTestDeviceUrl(url) {
+                return
+            }
 
-        if Actito.shared.handleDynamicLinkUrl(url) {
-            return
-        }
+            if Actito.shared.handleDynamicLinkUrl(url) {
+                return
+            }
 
-        EventBroker.instance.dispatchEvent("url_opened", data: ["url": url.absoluteString])
+            EventBroker.instance.dispatchEvent("url_opened", data: ["url": url.absoluteString], retainUntilConsumed: true)
+        }
     }
 
     @objc func handleUniversalLink(notification: NSNotification) {
@@ -74,75 +77,89 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        if Actito.shared.handleTestDeviceUrl(url) {
-            return
-        }
+        DispatchQueue.main.async {
+            if Actito.shared.handleTestDeviceUrl(url) {
+                return
+            }
 
-        _ = Actito.shared.handleDynamicLinkUrl(url)
+            _ = Actito.shared.handleDynamicLinkUrl(url)
+        }
     }
 
     // MARK: - Actito
 
     @objc func isConfigured(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.isConfigured,
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.isConfigured,
+            ])
+        }
     }
 
     @objc func isReady(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.isReady,
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.isReady,
+            ])
+        }
     }
 
     @objc func launch(_ call: CAPPluginCall) {
-        Actito.shared.launch { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.launch { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func unlaunch(_ call: CAPPluginCall) {
-        Actito.shared.unlaunch { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.unlaunch { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func getApplication(_ call: CAPPluginCall) {
-        do {
-            var response: PluginCallResultData = [:]
-            if let application = Actito.shared.application {
-                response["result"] = try application.toJson()
-            }
+        DispatchQueue.main.async {
+            do {
+                var response: PluginCallResultData = [:]
+                if let application = Actito.shared.application {
+                    response["result"] = try application.toJson()
+                }
 
-            call.resolve(response)
-        } catch {
-            call.reject(error.localizedDescription)
+                call.resolve(response)
+            } catch {
+                call.reject(error.localizedDescription)
+            }
         }
     }
 
     @objc func fetchApplication(_ call: CAPPluginCall) {
-        Actito.shared.fetchApplication { result in
-            switch result {
-            case let .success(application):
-                do {
-                    call.resolve([
-                        "result": try application.toJson()
-                    ])
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.fetchApplication { result in
+                switch result {
+                case let .success(application):
+                    do {
+                        call.resolve([
+                            "result": try application.toJson()
+                        ])
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }
@@ -153,18 +170,20 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.fetchNotification(id) { result in
-            switch result {
-            case let .success(notification):
-                do {
-                    call.resolve([
-                        "result": try notification.toJson()
-                    ])
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.fetchNotification(id) { result in
+                switch result {
+                case let .success(notification):
+                    do {
+                        call.resolve([
+                            "result": try notification.toJson()
+                        ])
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }
@@ -175,37 +194,43 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.fetchDynamicLink(url) { result in
-            switch result {
-            case let .success(dynamicLink):
-                do {
-                    call.resolve([
-                        "result": try dynamicLink.toJson()
-                    ])
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.fetchDynamicLink(url) { result in
+                switch result {
+                case let .success(dynamicLink):
+                    do {
+                        call.resolve([
+                            "result": try dynamicLink.toJson()
+                        ])
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }
 
     @objc func canEvaluateDeferredLink(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.canEvaluateDeferredLink
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.canEvaluateDeferredLink
+            ])
+        }
     }
 
     @objc func evaluateDeferredLink(_ call: CAPPluginCall) {
-        Actito.shared.evaluateDeferredLink { result in
-            switch result {
-            case let .success(evaluated):
-                call.resolve([
-                    "result": evaluated
-                ])
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.evaluateDeferredLink { result in
+                switch result {
+                case let .success(evaluated):
+                    call.resolve([
+                        "result": evaluated
+                    ])
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -213,36 +238,42 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
     // MARK: - Actito device module
 
     @objc func getCurrentDevice(_ call: CAPPluginCall) {
-        do {
-            var response: PluginCallResultData = [:]
-            if let device = Actito.shared.device().currentDevice {
-                response["result"] = try device.toJson()
-            }
+        DispatchQueue.main.async {
+            do {
+                var response: PluginCallResultData = [:]
+                if let device = Actito.shared.device().currentDevice {
+                    response["result"] = try device.toJson()
+                }
 
-            call.resolve(response)
-        } catch {
-            call.reject(error.localizedDescription)
+                call.resolve(response)
+            } catch {
+                call.reject(error.localizedDescription)
+            }
         }
     }
 
     @objc func getPreferredLanguage(_ call: CAPPluginCall) {
-        var response: PluginCallResultData = [:]
-        if let language = Actito.shared.device().preferredLanguage {
-            response["result"] = language
-        }
+        DispatchQueue.main.async {
+            var response: PluginCallResultData = [:]
+            if let language = Actito.shared.device().preferredLanguage {
+                response["result"] = language
+            }
 
-        call.resolve(response)
+            call.resolve(response)
+        }
     }
 
     @objc func updatePreferredLanguage(_ call: CAPPluginCall) {
-        let language = call.getString("language")
+        DispatchQueue.main.async {
+            let language = call.getString("language")
 
-        Actito.shared.device().updatePreferredLanguage(language) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+            Actito.shared.device().updatePreferredLanguage(language) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -251,7 +282,7 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
         let userId = call.getString("userId")
         let userName = call.getString("userName")
 
-        onMainThread {
+        DispatchQueue.main.async {
             Actito.shared.device().register(userId: userId, userName: userName) { result in
                 switch result {
                 case .success:
@@ -267,25 +298,29 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
         let userId = call.getString("userId")
         let userName = call.getString("userName")
 
-        Actito.shared.device().updateUser(userId: userId, userName: userName) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().updateUser(userId: userId, userName: userName) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func fetchTags(_ call: CAPPluginCall) {
-        Actito.shared.device().fetchTags { result in
-            switch result {
-            case let .success(tags):
-                call.resolve([
-                    "result": tags
-                ])
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().fetchTags { result in
+                switch result {
+                case let .success(tags):
+                    call.resolve([
+                        "result": tags
+                    ])
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -296,12 +331,14 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.device().addTag(tag) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().addTag(tag) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -312,12 +349,14 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.device().addTags(tags) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().addTags(tags) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -328,12 +367,14 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.device().removeTag(tag) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().removeTag(tag) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -344,43 +385,49 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.device().removeTags(tags) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().removeTags(tags) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func clearTags(_ call: CAPPluginCall) {
-        Actito.shared.device().clearTags { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().clearTags { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func fetchDoNotDisturb(_ call: CAPPluginCall) {
-        Actito.shared.device().fetchDoNotDisturb { result in
-            switch result {
-            case let .success(dnd):
-                do {
-                    var response: PluginCallResultData = [:]
-                    if let dnd = dnd {
-                        response["result"] = try dnd.toJson()
-                    }
+        DispatchQueue.main.async {
+            Actito.shared.device().fetchDoNotDisturb { result in
+                switch result {
+                case let .success(dnd):
+                    do {
+                        var response: PluginCallResultData = [:]
+                        if let dnd = dnd {
+                            response["result"] = try dnd.toJson()
+                        }
 
-                    call.resolve(response)
-                } catch {
+                        call.resolve(response)
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }
@@ -399,36 +446,42 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.device().updateDoNotDisturb(dnd) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().updateDoNotDisturb(dnd) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func clearDoNotDisturb(_ call: CAPPluginCall) {
-        Actito.shared.device().clearDoNotDisturb { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().clearDoNotDisturb { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
 
     @objc func fetchUserData(_ call: CAPPluginCall) {
-        Actito.shared.device().fetchUserData { result in
-            switch result {
-            case let .success(userData):
-                call.resolve([
-                    "result": userData
-                ])
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().fetchUserData { result in
+                switch result {
+                case let .success(userData):
+                    call.resolve([
+                        "result": userData
+                    ])
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -441,12 +494,14 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
 
         let userData = json.mapValues { $0 as? String }
 
-        Actito.shared.device().updateUserData(userData) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.device().updateUserData(userData) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -461,12 +516,14 @@ public class ActitoPlugin: CAPPlugin, CAPBridgedPlugin {
 
         let data = call.getObject("data")
 
-        Actito.shared.events().logCustom(event, data: data) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.events().logCustom(event, data: data) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -512,15 +569,10 @@ extension ActitoPlugin {
         )
     }
 
+    @MainActor
     @objc private func didFinishLaunching() {
         removeApplicationLaunchListener()
 
         logger.hasDebugLoggingEnabled = Actito.shared.options?.debugLoggingEnabled ?? false
-    }
-}
-
-private func onMainThread(_ action: @escaping () -> Void) {
-    DispatchQueue.main.async {
-        action()
     }
 }

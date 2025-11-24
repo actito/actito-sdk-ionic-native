@@ -189,7 +189,7 @@ export const HomeView: FC = () => {
       await logout({
         logoutParams: {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          returnTo: `com.actito.sample.user.inbox.app.dev://${domain!}/capacitor/com.actito.sample.user.inbox.app.dev/callback`,
+          returnTo: `re.notifica.sample.user.inbox.app.dev://${domain!}/capacitor/re.notifica.sample.user.inbox.app.dev/callback`,
         },
         async openUrl(url) {
           // Redirect using Capacitor's Browser plugin

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 're.notifica.gradle.notificare-services'
+apply plugin: 'com.actito.gradle.actito-services'
 apply plugin: 'com.google.gms.google-services'
 
 def properties = new Properties()
@@ -49,6 +49,12 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        resources {
+          resources.excludes.add("META-INF/versions/9/OSGI-INF/MANIFEST.MF")
         }
     }
 }

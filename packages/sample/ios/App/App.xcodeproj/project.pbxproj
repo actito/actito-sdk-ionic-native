@@ -17,10 +17,10 @@
 		E5525A432E7863A00078CBFD /* CapApp-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = E5525A422E7863A00078CBFD /* CapApp-SPM */; };
 		E5525A472E7864990078CBFD /* ActitoNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5525A462E7864990078CBFD /* ActitoNotificationServiceExtensionKit */; };
 		E5525A4B2E7869430078CBFD /* ActitoNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5525A4A2E7869430078CBFD /* ActitoNotificationServiceExtensionKit */; };
+		E5A593EE2EA1323300B5EF7B /* ActitoOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5A593EC2EA1323300B5EF7B /* ActitoOptions.plist */; };
+		E5A593EF2EA1323300B5EF7B /* ActitoServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5A593ED2EA1323300B5EF7B /* ActitoServices.plist */; };
 		E5F6D4B529DD5CE5006F3D16 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F6D4B429DD5CE5006F3D16 /* NotificationService.swift */; };
 		E5F6D4B929DD5CE5006F3D16 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E5F6D4B229DD5CE5006F3D16 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F26E108D27A06DA400FFA2E8 /* NotificareServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = F26E108B27A06DA400FFA2E8 /* NotificareServices.plist */; };
-		F26E108E27A06DA400FFA2E8 /* NotificareOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F26E108C27A06DA400FFA2E8 /* NotificareOptions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,12 +58,12 @@
 		504EC3131FED79650016851F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B271D01FEDC1A000F3C39B /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
 		E5525A442E78640E0078CBFD /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
+		E5A593EC2EA1323300B5EF7B /* ActitoOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ActitoOptions.plist; sourceTree = "<group>"; };
+		E5A593ED2EA1323300B5EF7B /* ActitoServices.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ActitoServices.plist; sourceTree = "<group>"; };
 		E5F6D4B229DD5CE5006F3D16 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F6D4B429DD5CE5006F3D16 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		E5F6D4B629DD5CE5006F3D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5F6D4BE29DD5DA5006F3D16 /* NotificareNotificationServiceExtensionKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NotificareNotificationServiceExtensionKit.xcframework; path = Pods/Notificare/Notificare/NotificareNotificationServiceExtensionKit.xcframework; sourceTree = "<group>"; };
-		F26E108B27A06DA400FFA2E8 /* NotificareServices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NotificareServices.plist; sourceTree = "<group>"; };
-		F26E108C27A06DA400FFA2E8 /* NotificareOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NotificareOptions.plist; sourceTree = "<group>"; };
 		F26E108F27A071D500FFA2E8 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +120,8 @@
 		504EC3061FED79650016851F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E5A593EC2EA1323300B5EF7B /* ActitoOptions.plist */,
+				E5A593ED2EA1323300B5EF7B /* ActitoServices.plist */,
 				F26E108F27A071D500FFA2E8 /* App.entitlements */,
 				50379B222058CBB4000EE86E /* capacitor.config.json */,
 				504EC3071FED79650016851F /* AppDelegate.swift */,
@@ -128,8 +130,6 @@
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
 				504EC3131FED79650016851F /* Info.plist */,
 				2FAD9762203C412B000D30F8 /* config.xml */,
-				F26E108B27A06DA400FFA2E8 /* NotificareServices.plist */,
-				F26E108C27A06DA400FFA2E8 /* NotificareOptions.plist */,
 				50B271D01FEDC1A000F3C39B /* public */,
 			);
 			path = App;
@@ -221,7 +221,7 @@
 			mainGroup = 504EC2FB1FED79650016851F;
 			packageReferences = (
 				E5525A412E7863A00078CBFD /* XCLocalSwiftPackageReference "CapApp-SPM" */,
-				E5525A452E7864990078CBFD /* XCRemoteSwiftPackageReference "actito-sdk-ios-in-house-releases" */,
+				E53778362EC5D3A900241FA5 /* XCRemoteSwiftPackageReference "actito-sdk-ios" */,
 			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
@@ -239,12 +239,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */,
-				F26E108E27A06DA400FFA2E8 /* NotificareOptions.plist in Resources */,
 				50B271D11FEDC1A000F3C39B /* public in Resources */,
+				E5A593EE2EA1323300B5EF7B /* ActitoOptions.plist in Resources */,
+				E5A593EF2EA1323300B5EF7B /* ActitoServices.plist in Resources */,
 				504EC30F1FED79650016851F /* Assets.xcassets in Resources */,
 				50379B232058CBB4000EE86E /* capacitor.config.json in Resources */,
 				504EC30D1FED79650016851F /* Main.storyboard in Resources */,
-				F26E108D27A06DA400FFA2E8 /* NotificareServices.plist in Resources */,
 				2FAD9763203C412B000D30F8 /* config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,12 +566,20 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E53778362EC5D3A900241FA5 /* XCRemoteSwiftPackageReference "actito-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Actito/actito-sdk-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = "5.0.0-beta.1";
+			};
+		};
 		E5525A452E7864990078CBFD /* XCRemoteSwiftPackageReference "actito-sdk-ios-in-house-releases" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/actito/actito-sdk-ios-in-house-releases";
 			requirement = {
 				kind = exactVersion;
-				version = "5.0.0-canary.1";
+				version = "5.0.0-canary.5";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

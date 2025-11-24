@@ -2,6 +2,9 @@
 	"appId": "com.actito.sample.app",
 	"appName": "sample",
 	"webDir": "build",
+	"android": {
+		"adjustMarginsForEdgeToEdge": "force"
+	},
 	"packageClassList": [
 		"AppPlugin",
 		"HapticsPlugin",

@@ -18,6 +18,7 @@ public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
         }
     }
 
+    @MainActor
     public override func load() {
         addApplicationLaunchListener()
 
@@ -40,7 +41,7 @@ public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        onMainThread {
+        DispatchQueue.main.async {
             guard let rootViewController = self.rootViewController else {
                 call.reject("Cannot present a notification with a nil root view controller.", nil)
                 return
@@ -81,7 +82,7 @@ public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        onMainThread {
+        DispatchQueue.main.async {
             guard let rootViewController = self.rootViewController else {
                 call.reject("Cannot present a notification with a nil root view controller.", nil)
                 return
@@ -92,6 +93,7 @@ public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
         }
     }
 
+    @MainActor
     private func createNavigationController() -> UINavigationController {
         let navigationController = UINavigationController()
         let theme = Actito.shared.options?.theme(for: navigationController)
@@ -243,15 +245,10 @@ extension ActitoPushUIPlugin {
         )
     }
 
+    @MainActor
     @objc private func didFinishLaunching() {
         removeApplicationLaunchListener()
 
         logger.hasDebugLoggingEnabled = Actito.shared.options?.debugLoggingEnabled ?? false
-    }
-}
-
-private func onMainThread(_ action: @escaping () -> Void) {
-    DispatchQueue.main.async {
-        action()
     }
 }

@@ -64,18 +64,20 @@ public class ActitoUserInboxPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.userInbox().open(item) { result in
-            switch result {
-            case let .success(notification):
-                do {
-                    call.resolve([
-                        "result": try notification.toJson()
-                    ])
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.userInbox().open(item) { result in
+                switch result {
+                case let .success(notification):
+                    do {
+                        call.resolve([
+                            "result": try notification.toJson()
+                        ])
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }
@@ -95,12 +97,14 @@ public class ActitoUserInboxPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.userInbox().markAsRead(item) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.userInbox().markAsRead(item) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }
@@ -120,12 +124,14 @@ public class ActitoUserInboxPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.userInbox().remove(item) { result in
-            switch result {
-            case .success:
-                call.resolve()
-            case let .failure(error):
-                call.reject(error.localizedDescription)
+        DispatchQueue.main.async {
+            Actito.shared.userInbox().remove(item) { result in
+                switch result {
+                case .success:
+                    call.resolve()
+                case let .failure(error):
+                    call.reject(error.localizedDescription)
+                }
             }
         }
     }

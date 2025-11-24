@@ -66,9 +66,9 @@ captures
 .externalNativeBuild
 
 
-# Notificare configs
-notificare-services.json
-NotificareServices.plist
+# Actito configs
+actito-services.json
+ActitoServices.plist
 
 # Push providers
 google-services.json

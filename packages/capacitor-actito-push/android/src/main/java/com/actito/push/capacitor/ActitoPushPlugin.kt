@@ -68,9 +68,6 @@ public class ActitoPushPlugin : Plugin() {
             Actito.push().observableSubscription.observeForever(subscriptionObserver)
         }
 
-        val intent = activity?.intent
-        if (intent != null) handleOnNewIntent(intent)
-
         notificationsPermissionLauncher = bridge.registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { granted ->

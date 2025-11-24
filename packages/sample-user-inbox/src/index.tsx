@@ -18,7 +18,7 @@ root.render(
     useRefreshTokens={true}
     useRefreshTokensFallback={false}
     authorizationParams={{
-      redirect_uri: `com.actito.sample.user.inbox.app.dev://${domain!}/capacitor/com.actito.sample.user.inbox.app.dev/callback`,
+      redirect_uri: `re.notifica.sample.user.inbox.app.dev://${domain!}/capacitor/re.notifica.sample.user.inbox.app.dev/callback`,
     }}
   >
     <App />

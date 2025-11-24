@@ -12,6 +12,7 @@ public class ActitoInAppMessagingPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "setMessagesSuppressed", returnType: CAPPluginReturnPromise),
     ]
 
+    @MainActor
     public override func load() {
         addApplicationLaunchListener()
 
@@ -20,9 +21,11 @@ public class ActitoInAppMessagingPlugin: CAPPlugin, CAPBridgedPlugin {
     }
 
     @objc func hasMessagesSuppressed(_ call: CAPPluginCall) {
-        call.resolve([
-            "result": Actito.shared.inAppMessaging().hasMessagesSuppressed
-        ])
+        DispatchQueue.main.async {
+            call.resolve([
+                "result": Actito.shared.inAppMessaging().hasMessagesSuppressed
+            ])
+        }
     }
 
     @objc func setMessagesSuppressed(_ call: CAPPluginCall) {
@@ -33,9 +36,11 @@ public class ActitoInAppMessagingPlugin: CAPPlugin, CAPBridgedPlugin {
 
         let evaluateContext = call.getBool("evaluateContext") ?? false
 
-        Actito.shared.inAppMessaging().setMessagesSuppressed(suppressed, evaluateContext: evaluateContext)
+        DispatchQueue.main.async {
+            Actito.shared.inAppMessaging().setMessagesSuppressed(suppressed, evaluateContext: evaluateContext)
 
-        call.resolve()
+            call.resolve()
+        }
     }
 }
 
@@ -125,6 +130,7 @@ extension ActitoInAppMessagingPlugin {
         )
     }
 
+    @MainActor
     @objc private func didFinishLaunching() {
         removeApplicationLaunchListener()
 

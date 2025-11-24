@@ -17,18 +17,20 @@ public class ActitoAssetsPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
 
-        Actito.shared.assets().fetch(group: group) { result in
-            switch result {
-            case let .success(assets):
-                do {
-                    call.resolve([
-                        "result": try assets.map { try $0.toJson() }
-                    ])
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.assets().fetch(group: group) { result in
+                switch result {
+                case let .success(assets):
+                    do {
+                        call.resolve([
+                            "result": try assets.map { try $0.toJson() }
+                        ])
+                    } catch {
+                        call.reject(error.localizedDescription)
+                    }
+                case let .failure(error):
                     call.reject(error.localizedDescription)
                 }
-            case let .failure(error):
-                call.reject(error.localizedDescription)
             }
         }
     }
