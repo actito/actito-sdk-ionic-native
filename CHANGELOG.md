@@ -26,7 +26,6 @@
 - Add required referrer for embedded YouTube videos
 - Updated to Kotlin 2.0
 - Improved network request retry mechanism
-- Exposed Firebase Messaging handlers
 - Fix conflicting flags in geo pending intents
 
 Prior to upgrading to v5.x, consult the [Migration Guide](./MIGRATION.md), which outlines all necessary changes and procedures to ensure a smooth migration.
