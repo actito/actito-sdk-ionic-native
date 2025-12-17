@@ -1,0 +1,62 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.9.2'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.20'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.actito.push.ui.capacitor'
+    }
+
+    compileSdkVersion 36
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 35
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs += [
+                '-Xexplicit-api=strict',
+                '-Xopt-in=com.actito.InternalActitoApi',
+        ]
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':capacitor-android')
+
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+
+    def actito_version = '5.0.0-beta.2'
+    api "com.actito:actito:$actito_version"
+    api "com.actito:actito-push-ui:$actito_version"
+    implementation "com.actito:actito-utilities:$actito_version"
+}

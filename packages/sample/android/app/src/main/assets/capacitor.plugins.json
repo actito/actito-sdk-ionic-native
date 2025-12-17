@@ -1,0 +1,50 @@
+[
+	{
+		"pkg": "@capacitor/app",
+		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
+	},
+	{
+		"pkg": "@capacitor/haptics",
+		"classpath": "com.capacitorjs.plugins.haptics.HapticsPlugin"
+	},
+	{
+		"pkg": "@capacitor/keyboard",
+		"classpath": "com.capacitorjs.plugins.keyboard.KeyboardPlugin"
+	},
+	{
+		"pkg": "@capacitor/status-bar",
+		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
+	},
+	{
+		"pkg": "capacitor-actito",
+		"classpath": "com.actito.capacitor.ActitoPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-assets",
+		"classpath": "com.actito.assets.capacitor.ActitoAssetsPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-geo",
+		"classpath": "com.actito.geo.capacitor.ActitoGeoPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-in-app-messaging",
+		"classpath": "com.actito.iam.capacitor.ActitoInAppMessagingPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-inbox",
+		"classpath": "com.actito.inbox.capacitor.ActitoInboxPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-loyalty",
+		"classpath": "com.actito.loyalty.capacitor.ActitoLoyaltyPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-push",
+		"classpath": "com.actito.push.capacitor.ActitoPushPlugin"
+	},
+	{
+		"pkg": "capacitor-actito-push-ui",
+		"classpath": "com.actito.push.ui.capacitor.ActitoPushUIPlugin"
+	}
+]
