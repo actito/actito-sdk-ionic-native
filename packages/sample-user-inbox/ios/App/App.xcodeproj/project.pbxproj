@@ -67,7 +67,6 @@
 		E5F6D4B229DD5CE5006F3D16 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F6D4B429DD5CE5006F3D16 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		E5F6D4B629DD5CE5006F3D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5F6D4BE29DD5DA5006F3D16 /* NotificareNotificationServiceExtensionKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NotificareNotificationServiceExtensionKit.xcframework; path = Pods/Notificare/Notificare/NotificareNotificationServiceExtensionKit.xcframework; sourceTree = "<group>"; };
 		F26E108F27A071D500FFA2E8 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,7 +93,6 @@
 		27E2DDA53C4D2A4D1A88CE4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E5F6D4BE29DD5DA5006F3D16 /* NotificareNotificationServiceExtensionKit.xcframework */,
 				C650A5BE988895057DD95277 /* Pods_App.framework */,
 				661C7F5AC1E83F76CBD5EA71 /* Pods_NotificationServiceExtension.framework */,
 			);
