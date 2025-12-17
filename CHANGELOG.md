@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Upcoming release
+## 5.0.0-beta.2
 
 - Add Swift Package Manager support
 - Added name and size restrictions to tag names, event names and event payloads
