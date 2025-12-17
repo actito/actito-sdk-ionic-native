@@ -63,9 +63,6 @@ repositories {
     flatDir {
         dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
     }
-
-    maven { url 'https://maven.notifica.re/releases' }
-    maven { url 'https://maven.notifica.re/prereleases' }
 }
 
 dependencies {
