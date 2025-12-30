@@ -115,7 +115,7 @@ lane :bump do |options|
 end
 
 desc <<-DESC
-Updates the lockfile of each package, and samples apps iOS dependencies (SPM & Pods).
+Updates the lockfile of each package, and sample apps iOS dependencies (SPM & Pods).
 
 #### Examples
 ```sh
@@ -127,7 +127,7 @@ lane :update_sample_apps do
   dependency_url = "https://github.com/Actito/actito-sdk-ios.git"
   dependency_version = get_spm_dependency_version(package_swift_path, dependency_url)
 
-  UI.message('Bootstrapping packages.')
+  UI.message('Bootstrapping packages for all modules and sample apps.')
   bootstrap_packages
 
   UI.message('Updating Sample Pods and SPM.')
