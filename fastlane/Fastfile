@@ -115,35 +115,70 @@ lane :bump do |options|
 end
 
 desc <<-DESC
-Updates the lockfile of each package and sample app pods.
+Updates the lockfile of each package, and samples apps iOS dependencies (SPM & Pods).
 
 #### Examples
 ```sh
-bundle exec fastlane update_sample
+bundle exec fastlane update_sample_apps
 ```
 DESC
-lane :update_sample do
+lane :update_sample_apps do
+  package_swift_path = "../packages/capacitor-actito/Package.swift"
+  dependency_url = "https://github.com/Actito/actito-sdk-ios.git"
+  dependency_version = get_spm_dependency_version(package_swift_path, dependency_url)
+
   UI.message('Bootstrapping packages.')
   bootstrap_packages
 
-  ios_dir = "../packages/sample/ios/App"
-  podfile_path = File.join(ios_dir, "Podfile")
+  UI.message('Updating Sample Pods and SPM.')
+  update_sample_app(dependency_url, dependency_version)
+
+  UI.message('Updating Sample User Inbox Pods and SPM.')
+  update_sample_user_inbox_app(dependency_url, dependency_version)
+end
+
+def update_sample_app(dependency_url, dependency_version)
+  sample_ios_path = "../packages/sample/ios/App"
+  sample_ios_project_path = "../packages/sample/ios/App/App.xcodeproj"
+  podfile_path = File.join(sample_ios_path, "Podfile")
 
   if File.exist?(podfile_path)
-    UI.message('Updating Cocoapods repo.')
-    update_pod_repo
+    UI.message('Updating Sample ActitoNotificationServiceExtensionKit pod.')
+    update_pod_notification_service_extension(sample_ios_path, dependency_version)
 
-    UI.message('Updating app pods.')
-    update_pods
+    UI.message('Updating Sample Cocoapods repo.')
+    update_pod_repo(sample_ios_path)
+
+    UI.message('Updating Sample app pods.')
+    update_pods(sample_ios_path)
   else
-    UI.message('No Podfile found. Skipping Cocoapods steps.')
+    UI.important("No Podfile found for #{sample_ios_path}. Skipping Cocoapods steps.")
   end
 
-  UI.message('Updating app SPM.')
-  update_sample_spm_dependency
+  UI.message('Updating Sample SPM.')
+  update_project_spm_dependency(sample_ios_project_path, dependency_url, dependency_version)
+end
 
-  UI.message('Clean DerivedData.')
-  stream_shell_command("cd #{ios_dir} && rm -rf DerivedData")
+def update_sample_user_inbox_app(dependency_url, dependency_version)
+  sample_user_inbox_ios_path = "../packages/sample-user-inbox/ios/App"
+  sample_user_inbox_ios_project_path = "../packages/sample-user-inbox/ios/App/App.xcodeproj"
+  podfile_path = File.join(sample_user_inbox_ios_path, "Podfile")
+
+  if File.exist?(podfile_path)
+    UI.message('Updating Sample User Inbox ActitoNotificationServiceExtensionKit pod.')
+    update_pod_notification_service_extension(sample_user_inbox_ios_path, dependency_version)
+
+    UI.message('Updating Sample User Inbox Cocoapods repo.')
+    update_pod_repo(sample_user_inbox_ios_path)
+
+    UI.message('Updating Sample User Inbox app pods.')
+    update_pods(sample_user_inbox_ios_path)
+  else
+    UI.important("No Podfile found for #{sample_user_inbox_ios_path}. Skipping Cocoapods steps.")
+  end
+
+  UI.message('Updating Sample User Inbox SPM.')
+  update_project_spm_dependency(sample_user_inbox_ios_project_path, dependency_url, dependency_version)
 end
 
 desc <<-DESC
@@ -227,21 +262,46 @@ def bootstrap_packages
   stream_shell_command("cd ../packages/sample && ionic cap sync")
 end
 
-def update_pod_repo
-  stream_shell_command("cd ../packages/sample/ios/App && pod repo update")
+def update_pod_repo(ios_path)
+  stream_shell_command("cd #{ios_path} && pod repo update")
 end
 
-def update_pods
-  stream_shell_command("cd ../packages/sample/ios/App && pod update")
+def update_pods(ios_path)
+  stream_shell_command("cd #{ios_path} && pod update")
 end
 
-def update_sample_spm_dependency
-  package_swift_path = "../packages/capacitor-actito/Package.swift"
-  ios_project_path = "../packages/sample/ios/App/App.xcodeproj"
-  dependency_url = "https://github.com/Actito/actito-sdk-ios.git"
+def update_pod_notification_service_extension(ios_path, version)
+  podfile = "#{ios_path}/Podfile"
 
-  new_version = get_spm_dependency_version(package_swift_path, dependency_url)
-  UI.message("Updating Sample's Actito SPM dependency to: #{new_version}")
+  regex = /
+    (pod\s+['"]Actito\/ActitoNotificationServiceExtensionKit['"]\s*,\s*['"])
+    ([^'"]+)
+    (['"])
+  /x
+
+  content = File.read(podfile)
+  match = content.match(regex)
+
+  unless match
+    UI.important("ActitoNotificationServiceExtensionKit pod not found in #{podfile}, skipping update.")
+    return
+  end
+
+  current_version = match[2]
+
+  if current_version == version
+    UI.message("ActitoNotificationServiceExtensionKit in #{podfile} already at version #{version}, skipping update.")
+    return
+  end
+
+  replacement = "\\1#{version}\\3"
+  update_file(podfile, regex, replacement)
+
+  UI.message("ActitoNotificationServiceExtensionKit updated from #{current_version} → #{version}")
+end
+
+def update_project_spm_dependency(ios_project_path, dependency_url, version)
+  UI.message("Updating Actito SPM dependency in #{ios_project_path} to: #{version}")
 
   project = Xcodeproj::Project.open(ios_project_path)
   spm_ref = project
@@ -256,12 +316,12 @@ def update_sample_spm_dependency
 
   spm_ref.requirement = {
     'kind' => 'exactVersion',
-    'version' => new_version
+    'version' => version
   }
 
   project.save
 
-  UI.success("Updated #{dependency_url} → #{new_version}")
+  UI.success("Updated #{dependency_url} → #{version}")
 end
 
 def get_spm_dependency_version(package_swift_path, dependency_url)
