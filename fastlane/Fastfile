@@ -126,11 +126,24 @@ lane :update_sample do
   UI.message('Bootstrapping packages.')
   bootstrap_packages
 
-  UI.message('Updating Cocoapods repo.')
-  update_pod_repo
+  ios_dir = "../packages/sample/ios/App"
+  podfile_path = File.join(ios_dir, "Podfile")
 
-  UI.message('Updating app pods.')
-  update_pods
+  if File.exist?(podfile_path)
+    UI.message('Updating Cocoapods repo.')
+    update_pod_repo
+
+    UI.message('Updating app pods.')
+    update_pods
+  else
+    UI.message('No Podfile found. Skipping Cocoapods steps.')
+  end
+
+  UI.message('Updating app SPM.')
+  update_sample_spm_dependency
+
+  UI.message('Clean DerivedData.')
+  stream_shell_command("cd #{ios_dir} && rm -rf DerivedData")
 end
 
 desc <<-DESC
@@ -220,6 +233,53 @@ end
 
 def update_pods
   stream_shell_command("cd ../packages/sample/ios/App && pod update")
+end
+
+def update_sample_spm_dependency
+  package_swift_path = "../packages/capacitor-actito/Package.swift"
+  ios_project_path = "../packages/sample/ios/App/App.xcodeproj"
+  dependency_url = "https://github.com/Actito/actito-sdk-ios.git"
+
+  new_version = get_spm_dependency_version(package_swift_path, dependency_url)
+  UI.message("Updating Sample's Actito SPM dependency to: #{new_version}")
+
+  project = Xcodeproj::Project.open(ios_project_path)
+  spm_ref = project
+                .objects
+                .select { |o| o.is_a?(Xcodeproj::Project::Object::XCRemoteSwiftPackageReference) }
+                .find { |p| p.repositoryURL.downcase == dependency_url.downcase }
+
+  unless spm_ref
+    UI.important("⚠️ SPM package #{dependency_url} not found in Xcode project #{ios_project_path}. Skipping update.")
+    return
+  end
+
+  spm_ref.requirement = {
+    'kind' => 'exactVersion',
+    'version' => new_version
+  }
+
+  project.save
+
+  UI.success("Updated #{dependency_url} → #{new_version}")
+end
+
+def get_spm_dependency_version(package_swift_path, dependency_url)
+  content = File.read(package_swift_path)
+
+  regex = /
+    \.package\s*\(
+      [^\)]*
+      url:\s*"#{Regexp.escape(dependency_url)}"
+      [^\)]*
+      from:\s*"([^"]+)"
+  /mx
+
+  match = content.match(regex)
+
+  UI.user_error!("SPM version not found for dependency: #{dependency_url}") unless match
+
+  match[1]
 end
 
 def stream_shell_command(command)
