@@ -15,14 +15,14 @@
   "devDependencies": {
     "@commitlint/cli": "^16.0.1",
     "@commitlint/config-conventional": "^16.0.0",
-    "@ionic/eslint-config": "^0.3.0",
-    "@ionic/prettier-config": "^2.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
+    "@ionic/eslint-config": "^0.4.0",
+    "@ionic/prettier-config": "^4.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-prettier": "^5.5.0",
+    "husky": "^9.1.7",
     "lerna": "^4.0.0",
-    "prettier": "^2.5.1",
-    "typescript": "^4.5.4"
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

@@ -230,7 +230,7 @@ export class ActitoPush {
     callback: (data: {
       notification: ActitoNotification;
       deliveryMechanism: ActitoNotificationDeliveryMechanism;
-    }) => void
+    }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_info_received', callback);
   }
@@ -245,7 +245,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onSystemNotificationReceived event.
    */
   public static async onSystemNotificationReceived(
-    callback: (notification: ActitoSystemNotification) => void
+    callback: (notification: ActitoSystemNotification) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('system_notification_received', callback);
   }
@@ -260,7 +260,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onUnknownNotificationReceived event.
    */
   public static async onUnknownNotificationReceived(
-    callback: (notification: Record<string, any>) => void
+    callback: (notification: Record<string, any>) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('unknown_notification_received', callback);
   }
@@ -275,7 +275,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onNotificationOpened event.
    */
   public static async onNotificationOpened(
-    callback: (notification: ActitoNotification) => void
+    callback: (notification: ActitoNotification) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_opened', callback);
   }
@@ -290,7 +290,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onUnknownNotificationOpened event.
    */
   public static async onUnknownNotificationOpened(
-    callback: (notification: Record<string, any>) => void
+    callback: (notification: Record<string, any>) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('unknown_notification_opened', callback);
   }
@@ -306,7 +306,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onNotificationActionOpened event.
    */
   public static async onNotificationActionOpened(
-    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction }) => void
+    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_action_opened', callback);
   }
@@ -322,7 +322,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onUnknownNotificationActionOpened event.
    */
   public static async onUnknownNotificationActionOpened(
-    callback: (data: { notification: Record<string, any>; action: string; responseText?: string }) => void
+    callback: (data: { notification: Record<string, any>; action: string; responseText?: string }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('unknown_notification_action_opened', callback);
   }
@@ -338,7 +338,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onNotificationSettingsChanged event.
    */
   public static async onNotificationSettingsChanged(
-    callback: (granted: boolean) => void
+    callback: (granted: boolean) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_settings_changed', ({ granted }) => callback(granted));
   }
@@ -354,7 +354,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onSubscriptionChanged event.
    */
   public static async onSubscriptionChanged(
-    callback: (subscription: ActitoPushSubscription | undefined) => void
+    callback: (subscription: ActitoPushSubscription | undefined) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('subscription_changed', callback);
   }
@@ -370,7 +370,7 @@ export class ActitoPush {
    * {@link PluginListenerHandle} for the onShouldOpenNotificationSettings event.
    */
   public static async onShouldOpenNotificationSettings(
-    callback: (notification: ActitoNotification | null) => void
+    callback: (notification: ActitoNotification | null) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('should_open_notification_settings', callback);
   }
@@ -387,10 +387,10 @@ export class ActitoPush {
    * event.
    */
   public static async onFailedToRegisterForRemoteNotifications(
-    callback: (error: string) => void
+    callback: (error: string) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('failed_to_register_for_remote_notifications', ({ error }) =>
-      callback(error)
+      callback(error),
     );
   }
 }
