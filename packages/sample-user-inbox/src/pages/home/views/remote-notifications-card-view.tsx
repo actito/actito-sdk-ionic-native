@@ -49,7 +49,7 @@ export const RemoteNotificationsCardView: FC<RemoteNotificationsCardViewProps> =
         Promise.all(listeners).then((subscriptions) => subscriptions.forEach((s) => s.remove()));
       };
     },
-    [checkNotificationsStatus]
+    [checkNotificationsStatus],
   );
 
   useEffect(
@@ -60,7 +60,7 @@ export const RemoteNotificationsCardView: FC<RemoteNotificationsCardViewProps> =
         setStatusLoaded(true);
       })();
     },
-    [checkNotificationsStatus]
+    [checkNotificationsStatus],
   );
 
   async function updateNotificationsStatus(enabled: boolean) {

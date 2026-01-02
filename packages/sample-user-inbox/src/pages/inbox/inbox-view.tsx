@@ -69,7 +69,7 @@ export const InboxView: FC = () => {
     function loadInboxItems() {
       (async () => await refreshInbox())();
     },
-    [refreshInbox]
+    [refreshInbox],
   );
 
   useEffect(
@@ -88,7 +88,7 @@ export const InboxView: FC = () => {
         Promise.all(listeners).then((subscriptions) => subscriptions.forEach((s) => s.remove()));
       };
     },
-    [refreshInbox]
+    [refreshInbox],
   );
 
   async function open(item: ActitoUserInboxItem) {
