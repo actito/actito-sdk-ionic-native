@@ -38,7 +38,7 @@ export const GeoCardView: FC = () => {
         setStatusLoaded(true);
       })();
     },
-    [addToastInfoMessage]
+    [addToastInfoMessage],
   );
 
   async function updateLocationStatus(enabled: boolean) {

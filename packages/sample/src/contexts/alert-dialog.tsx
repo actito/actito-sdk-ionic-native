@@ -1,5 +1,5 @@
 import { IonAlert } from '@ionic/react';
-import type { ReactNode } from 'react';
+import type { JSX, ReactNode } from 'react';
 import { createContext, useContext, useState } from 'react';
 
 const AlertDialogContext = createContext<AlertDialogContextProps | undefined>(undefined);

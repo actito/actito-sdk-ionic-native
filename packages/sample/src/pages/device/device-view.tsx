@@ -59,7 +59,7 @@ export const DeviceView: FC = () => {
         await loadDeviceData();
       })();
     },
-    [loadDeviceData]
+    [loadDeviceData],
   );
 
   async function updateUser() {

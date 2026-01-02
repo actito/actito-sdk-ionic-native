@@ -53,7 +53,7 @@ export const RemoteNotificationsCardView: FC = () => {
         setStatusLoaded(true);
       })();
     },
-    [checkNotificationsStatus]
+    [checkNotificationsStatus],
   );
 
   useEffect(
@@ -74,7 +74,7 @@ export const RemoteNotificationsCardView: FC = () => {
         }
       })();
     },
-    [addToastInfoMessage]
+    [addToastInfoMessage],
   );
 
   async function updateNotificationsStatus(enabled: boolean) {
