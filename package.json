@@ -9,7 +9,7 @@
     "app:ios:xcode": "lerna run ionic:ios:xcode --scope sample --stream",
     "lint": "lerna run lint",
     "pack": "lerna run pack",
-    "prepare": "husky install",
+    "prepare": "husky",
     "typescript": "lerna run typescript"
   },
   "devDependencies": {
