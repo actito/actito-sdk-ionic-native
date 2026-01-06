@@ -9,7 +9,7 @@ PODS:
   - Actito/ActitoUserInboxKit (5.0.0-beta.2):
     - Actito/ActitoUtilitiesKit
   - Actito/ActitoUtilitiesKit (5.0.0-beta.2)
-  - Capacitor (6.1.2):
+  - Capacitor (6.2.1):
     - CapacitorCordova
   - CapacitorActito (5.0.0-beta.2):
     - Actito/ActitoKit (= 5.0.0-beta.2)
@@ -29,16 +29,16 @@ PODS:
     - Actito/ActitoKit (= 5.0.0-beta.2)
     - Actito/ActitoUserInboxKit (= 5.0.0-beta.2)
     - Capacitor
-  - CapacitorApp (6.0.1):
+  - CapacitorApp (6.0.3):
     - Capacitor
-  - CapacitorBrowser (6.0.2):
+  - CapacitorBrowser (6.0.6):
     - Capacitor
-  - CapacitorCordova (6.1.2)
-  - CapacitorHaptics (6.0.1):
+  - CapacitorCordova (6.2.1)
+  - CapacitorHaptics (6.0.3):
     - Capacitor
-  - CapacitorKeyboard (6.0.2):
+  - CapacitorKeyboard (6.0.4):
     - Capacitor
-  - CapacitorStatusBar (6.0.1):
+  - CapacitorStatusBar (6.0.3):
     - Capacitor
 
 DEPENDENCIES:
@@ -85,17 +85,17 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Actito: f38200958a514a7e08f26cd2ff4ed4603442638a
-  Capacitor: 69c7f687aabb8d85e543497411e40638b5cc08c0
+  Capacitor: c95400d761e376be9da6be5a05f226c0e865cebf
   CapacitorActito: 7bdc90882df5606fc32b08aea8cb325b5da571c1
   CapacitorActitoPush: a90059f52932f31eb6ef78e2047fae8e098de20d
   CapacitorActitoPushUi: f67818a2bb1b7d1c6727a2d6fde5020bb7bdc03c
   CapacitorActitoUserInbox: f51104528694b84cbc86c48a366704f251fe1a9a
-  CapacitorApp: f51c08c64df914fc934239fd1b3fc809d62a02f6
-  CapacitorBrowser: 80345fe3b83664d2f953e9fe102a996df73ec809
-  CapacitorCordova: f48c89f96c319101cd2f0ce8a2b7449b5fb8b3dd
-  CapacitorHaptics: 05d33e20e394b1977dfd2a00a2621e04098164c1
-  CapacitorKeyboard: 5bf4458dd989b56a60ea15c92cbca5fbfae6e9f9
-  CapacitorStatusBar: 9ed7f06318fd436917072a9bf60fda56d12c8bdb
+  CapacitorApp: a19ccb4f5f32d2534be5c6f524d5a9b614a1e8a7
+  CapacitorBrowser: 825163a1d6adce944ac7b9e3cab101146b5a9df8
+  CapacitorCordova: 8d93e14982f440181be7304aa9559ca631d77fff
+  CapacitorHaptics: 40f83026feeee9cfe36e89e9c98a3baaaf20c450
+  CapacitorKeyboard: e8cd50fd5cbdd023a5947a5c0f5cca6e5aa5a253
+  CapacitorStatusBar: 149cde8f1328ec3aa6cbdd872a55137ae3f98b16
 
 PODFILE CHECKSUM: e54d3cc4135d9179385a9abced6e7ba0afae62ce
 

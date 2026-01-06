@@ -57,7 +57,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onNotificationWillPresent event.
    */
   static async onNotificationWillPresent(
-    callback: (notification: ActitoNotification) => void
+    callback: (notification: ActitoNotification) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_will_present', callback);
   }
@@ -74,7 +74,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onNotificationPresented event.
    */
   static async onNotificationPresented(
-    callback: (notification: ActitoNotification) => void
+    callback: (notification: ActitoNotification) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_presented', callback);
   }
@@ -92,7 +92,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onNotificationFinishedPresenting event.
    */
   static async onNotificationFinishedPresenting(
-    callback: (notification: ActitoNotification) => void
+    callback: (notification: ActitoNotification) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_finished_presenting', callback);
   }
@@ -110,7 +110,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onNotificationFailedToPresent event.
    */
   static async onNotificationFailedToPresent(
-    callback: (notification: ActitoNotification) => void
+    callback: (notification: ActitoNotification) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_failed_to_present', callback);
   }
@@ -127,7 +127,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onNotificationUrlClicked event.
    */
   static async onNotificationUrlClicked(
-    callback: (data: { notification: ActitoNotification; url: string }) => void
+    callback: (data: { notification: ActitoNotification; url: string }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('notification_url_clicked', callback);
   }
@@ -146,7 +146,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onActionWillExecute event.
    */
   static async onActionWillExecute(
-    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction }) => void
+    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('action_will_execute', callback);
   }
@@ -165,7 +165,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onActionExecuted event.
    */
   static async onActionExecuted(
-    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction }) => void
+    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('action_executed', callback);
   }
@@ -185,7 +185,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onActionNotExecuted event.
    */
   static async onActionNotExecuted(
-    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction }) => void
+    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('action_not_executed', callback);
   }
@@ -205,7 +205,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onActionFailedToExecute event.
    */
   static async onActionFailedToExecute(
-    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction; error?: string }) => void
+    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction; error?: string }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('action_failed_to_execute', callback);
   }
@@ -225,7 +225,7 @@ export class ActitoPushUI {
    * {@link PluginListenerHandle} for the onCustomActionReceived event.
    */
   static async onCustomActionReceived(
-    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction; url: string }) => void
+    callback: (data: { notification: ActitoNotification; action: ActitoNotificationAction; url: string }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('custom_action_received', callback);
   }

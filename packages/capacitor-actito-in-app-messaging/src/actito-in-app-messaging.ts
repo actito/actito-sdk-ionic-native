@@ -56,7 +56,7 @@ export class ActitoInAppMessaging {
    * {@link PluginListenerHandle} for the onMessagePresented event.
    */
   public static async onMessagePresented(
-    callback: (message: ActitoInAppMessage) => void
+    callback: (message: ActitoInAppMessage) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('message_presented', ({ message }) => callback(message));
   }
@@ -73,7 +73,7 @@ export class ActitoInAppMessaging {
    * {@link PluginListenerHandle} for the onMessageFinishedPresenting event.
    */
   public static async onMessageFinishedPresenting(
-    callback: (message: ActitoInAppMessage) => void
+    callback: (message: ActitoInAppMessage) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('message_finished_presenting', ({ message }) => callback(message));
   }
@@ -88,7 +88,7 @@ export class ActitoInAppMessaging {
    * {@link PluginListenerHandle} for the onMessageFailedToPresent event.
    */
   public static async onMessageFailedToPresent(
-    callback: (message: ActitoInAppMessage) => void
+    callback: (message: ActitoInAppMessage) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('message_failed_to_present', ({ message }) => callback(message));
   }
@@ -104,7 +104,7 @@ export class ActitoInAppMessaging {
    * {@link PluginListenerHandle} for the onActionExecuted event.
    */
   public static async onActionExecuted(
-    callback: (data: { message: ActitoInAppMessage; action: ActitoInAppMessageAction }) => void
+    callback: (data: { message: ActitoInAppMessage; action: ActitoInAppMessageAction }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('action_executed', callback);
   }
@@ -123,7 +123,7 @@ export class ActitoInAppMessaging {
    * {@link PluginListenerHandle} for the onActionFailedToExecute event.
    */
   public static async onActionFailedToExecute(
-    callback: (data: { message: ActitoInAppMessage; action: ActitoInAppMessageAction; error?: string }) => void
+    callback: (data: { message: ActitoInAppMessage; action: ActitoInAppMessageAction; error?: string }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('action_failed_to_execute', callback);
   }
