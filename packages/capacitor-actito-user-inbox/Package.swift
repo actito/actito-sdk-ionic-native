@@ -10,7 +10,7 @@ let package = Package(
             targets: ["ActitoUserInboxPlugin"])
     ],
     dependencies: [
-        .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", from: "8.0.0"),
+        .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", "7.0.0"..<"9.0.0"),
         .package(url: "https://github.com/Actito/actito-sdk-ios.git", from: "5.0.0-beta.2"),
     ],
     targets: [
