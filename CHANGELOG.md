@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Upcoming release
+
+- Capacitor 8 support
+
 ## 5.0.0-beta.2
 
 - Add Swift Package Manager support
