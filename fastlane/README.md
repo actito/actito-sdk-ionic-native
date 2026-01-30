@@ -85,7 +85,7 @@ bundle exec fastlane bump version:3.4.0
 [bundle exec] fastlane update_sample_apps
 ```
 
-Updates the lockfile of each package, and samples apps iOS dependencies (SPM & Pods).
+Updates the lockfile of each package, and sample apps iOS dependencies (SPM & Pods).
 
 #### Examples
 ```sh
