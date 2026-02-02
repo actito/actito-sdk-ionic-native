@@ -15,10 +15,10 @@
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
 		E5525A432E7863A00078CBFD /* CapApp-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = E5525A422E7863A00078CBFD /* CapApp-SPM */; };
-		E5525A472E7864990078CBFD /* ActitoNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5525A462E7864990078CBFD /* ActitoNotificationServiceExtensionKit */; };
-		E5525A4B2E7869430078CBFD /* ActitoNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5525A4A2E7869430078CBFD /* ActitoNotificationServiceExtensionKit */; };
 		E5A593EE2EA1323300B5EF7B /* ActitoOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5A593EC2EA1323300B5EF7B /* ActitoOptions.plist */; };
 		E5A593EF2EA1323300B5EF7B /* ActitoServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5A593ED2EA1323300B5EF7B /* ActitoServices.plist */; };
+		E5A5AE912F2CF094004C6FC7 /* ActitoNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5A5AE902F2CF094004C6FC7 /* ActitoNotificationServiceExtensionKit */; };
+		E5A5AE932F2CF09E004C6FC7 /* ActitoNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5A5AE922F2CF09E004C6FC7 /* ActitoNotificationServiceExtensionKit */; };
 		E5F6D4B529DD5CE5006F3D16 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F6D4B429DD5CE5006F3D16 /* NotificationService.swift */; };
 		E5F6D4B929DD5CE5006F3D16 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E5F6D4B229DD5CE5006F3D16 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5525A4B2E7869430078CBFD /* ActitoNotificationServiceExtensionKit in Frameworks */,
+				E5A5AE932F2CF09E004C6FC7 /* ActitoNotificationServiceExtensionKit in Frameworks */,
 				E5525A432E7863A00078CBFD /* CapApp-SPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5525A472E7864990078CBFD /* ActitoNotificationServiceExtensionKit in Frameworks */,
+				E5A5AE912F2CF094004C6FC7 /* ActitoNotificationServiceExtensionKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +95,7 @@
 				504EC3051FED79650016851F /* Products */,
 				8A71135DD31BC9487A8FA11B /* Pods */,
 				E5525A442E78640E0078CBFD /* debug.xcconfig */,
+				E5A5AE8F2F2CF094004C6FC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +131,13 @@
 			children = (
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E5A5AE8F2F2CF094004C6FC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E5F6D4B329DD5CE5006F3D16 /* NotificationServiceExtension */ = {
@@ -561,15 +569,7 @@
 			repositoryURL = "https://github.com/Actito/actito-sdk-ios.git";
 			requirement = {
 				kind = exactVersion;
-				version = "5.0.0-beta.2";
-			};
-		};
-		E5525A452E7864990078CBFD /* XCRemoteSwiftPackageReference "actito-sdk-ios-in-house-releases" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/actito/actito-sdk-ios-in-house-releases";
-			requirement = {
-				kind = exactVersion;
-				version = "5.0.0-canary.5";
+				version = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -579,14 +579,14 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = "CapApp-SPM";
 		};
-		E5525A462E7864990078CBFD /* ActitoNotificationServiceExtensionKit */ = {
+		E5A5AE902F2CF094004C6FC7 /* ActitoNotificationServiceExtensionKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5525A452E7864990078CBFD /* XCRemoteSwiftPackageReference "actito-sdk-ios-in-house-releases" */;
+			package = E53778362EC5D3A900241FA5 /* XCRemoteSwiftPackageReference "actito-sdk-ios" */;
 			productName = ActitoNotificationServiceExtensionKit;
 		};
-		E5525A4A2E7869430078CBFD /* ActitoNotificationServiceExtensionKit */ = {
+		E5A5AE922F2CF09E004C6FC7 /* ActitoNotificationServiceExtensionKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5525A452E7864990078CBFD /* XCRemoteSwiftPackageReference "actito-sdk-ios-in-house-releases" */;
+			package = E53778362EC5D3A900241FA5 /* XCRemoteSwiftPackageReference "actito-sdk-ios" */;
 			productName = ActitoNotificationServiceExtensionKit;
 		};
 /* End XCSwiftPackageProductDependency section */
