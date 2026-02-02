@@ -1,7 +1,7 @@
 import type { Color } from '@ionic/core';
 import { IonToast } from '@ionic/react';
-import type { ReactNode } from 'react';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 const ToastContext = createContext<ToastContextProps | undefined>(undefined);
 
@@ -42,7 +42,7 @@ export function ToastProvider({ children }: ToastProviderProps): JSX.Element {
       setCurrentToast(Toast);
       setToastQueue((prevState) => prevState.slice(1));
     },
-    [currentToast, ToastQueue]
+    [currentToast, ToastQueue],
   );
 
   function getToastColor(Toast: Toast): Color {

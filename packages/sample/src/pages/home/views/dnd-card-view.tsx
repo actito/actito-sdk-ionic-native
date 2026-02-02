@@ -32,7 +32,7 @@ export const DnDNotificationsCardView: FC = () => {
         setStatusLoaded(true);
       })();
     },
-    [addToastInfoMessage]
+    [addToastInfoMessage],
   );
 
   async function updateDndStatus(enabled: boolean) {

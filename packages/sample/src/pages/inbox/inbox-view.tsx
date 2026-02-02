@@ -48,7 +48,7 @@ export const InboxView: FC = () => {
         }
       })();
     },
-    [addToastInfoMessage]
+    [addToastInfoMessage],
   );
 
   useEffect(function setupListeners() {

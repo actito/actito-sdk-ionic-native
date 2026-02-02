@@ -4,9 +4,9 @@
 ```shell
 bundle exec fastlane bump version:foo
 ```
-2. Update the sample app.
+2. Update the sample apps.
 ```shell
-bundle exec fastlane update_sample
+bundle exec fastlane update_sample_apps
 ```
 3. Ensure there are no publishing issues.
 ```shell

@@ -148,7 +148,7 @@ export class ActitoGeo {
    */
   public static async presentPermissionRationale(
     permission: PermissionGroup,
-    rationale: PermissionRationale
+    rationale: PermissionRationale,
   ): Promise<void> {
     await NativePlugin.presentPermissionRationale({ permission, rationale });
   }
@@ -261,7 +261,7 @@ export class ActitoGeo {
    * {@link PluginListenerHandle} for the onBeaconsRanged event.
    */
   public static async onBeaconsRanged(
-    callback: (data: { region: ActitoRegion; beacons: ActitoBeacon[] }) => void
+    callback: (data: { region: ActitoRegion; beacons: ActitoBeacon[] }) => void,
   ): Promise<PluginListenerHandle> {
     return await NativePlugin.addListener('beacons_ranged', callback);
   }

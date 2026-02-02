@@ -49,7 +49,7 @@ export const TagsView: FC = () => {
         await fetchTags();
       })();
     },
-    [fetchTags]
+    [fetchTags],
   );
 
   async function addTags() {
