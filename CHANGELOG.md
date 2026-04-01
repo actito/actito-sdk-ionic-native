@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.1.0
+
+#### Native changes
+
+##### Android
+
+- Add a hook to customise the notification generated for the lock screen.
+
 ## 5.0.0
 
 Prior to upgrading to v5.x, consult the [Migration Guide](./MIGRATION.md), which outlines all necessary changes and procedures to ensure a smooth migration.
@@ -29,6 +37,7 @@ Prior to upgrading to v5.x, consult the [Migration Guide](./MIGRATION.md), which
 
 - Updated to Kotlin 2.0
 - Fix conflicting flags in geo pending intents
+
 ## 5.0.0-beta.2
 
 - Add Swift Package Manager support
