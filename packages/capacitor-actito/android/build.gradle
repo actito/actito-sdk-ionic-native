@@ -59,7 +59,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.7.1'
 
-    def actito_version = '5.1.0'
+    def actito_version = '5.2.0'
     api "com.actito:actito:$actito_version"
     implementation "com.actito:actito-utilities:$actito_version"
 }
