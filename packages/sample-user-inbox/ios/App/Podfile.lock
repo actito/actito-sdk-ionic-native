@@ -11,21 +11,21 @@ PODS:
   - Actito/ActitoUtilitiesKit (5.2.0)
   - Capacitor (6.2.1):
     - CapacitorCordova
-  - CapacitorActito (5.1.0):
+  - CapacitorActito (5.2.0):
     - Actito/ActitoKit (= 5.2.0)
     - Actito/ActitoUtilitiesKit (= 5.2.0)
     - Capacitor
-  - CapacitorActitoPush (5.1.0):
+  - CapacitorActitoPush (5.2.0):
     - Actito/ActitoKit (= 5.2.0)
     - Actito/ActitoPushKit (= 5.2.0)
     - Actito/ActitoUtilitiesKit (= 5.2.0)
     - Capacitor
-  - CapacitorActitoPushUi (5.1.0):
+  - CapacitorActitoPushUi (5.2.0):
     - Actito/ActitoKit (= 5.2.0)
     - Actito/ActitoPushUIKit (= 5.2.0)
     - Actito/ActitoUtilitiesKit (= 5.2.0)
     - Capacitor
-  - CapacitorActitoUserInbox (5.1.0):
+  - CapacitorActitoUserInbox (5.2.0):
     - Actito/ActitoKit (= 5.2.0)
     - Actito/ActitoUserInboxKit (= 5.2.0)
     - Capacitor
@@ -86,10 +86,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Actito: ba4508d113c6c472473c97d6f386407433787005
   Capacitor: c95400d761e376be9da6be5a05f226c0e865cebf
-  CapacitorActito: 2d11f3f2783bfd1d91bf3f858bb8854251256001
-  CapacitorActitoPush: 54684f4dbd9bfdd24c21fec3b4a428aabc6d3756
-  CapacitorActitoPushUi: 277e2985726eb52d5c35f0301034822392035d23
-  CapacitorActitoUserInbox: e5b862c4918ff4708ac1bda661d7e1e3a4f45536
+  CapacitorActito: a337ed2e859d8384edf7ad7d6af5e304c2b6d482
+  CapacitorActitoPush: 2823487c275b2f617c0d7b5c8a26bd933302226c
+  CapacitorActitoPushUi: 91e15d3a488a2e28c3aee05119ab58cd80768797
+  CapacitorActitoUserInbox: a162ba675aeab21cfd780f52ea93d21284311f55
   CapacitorApp: a19ccb4f5f32d2534be5c6f524d5a9b614a1e8a7
   CapacitorBrowser: 825163a1d6adce944ac7b9e3cab101146b5a9df8
   CapacitorCordova: 8d93e14982f440181be7304aa9559ca631d77fff
