@@ -115,14 +115,6 @@ public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
 
         return navigationController
     }
-
-    @objc private func onCloseClicked() {
-        guard let rootViewController = rootViewController else {
-            return
-        }
-
-        rootViewController.dismiss(animated: true, completion: nil)
-    }
 }
 
 extension ActitoPushUIPlugin: ActitoPushUIDelegate {
