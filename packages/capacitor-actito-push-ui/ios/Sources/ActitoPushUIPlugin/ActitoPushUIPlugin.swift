@@ -15,15 +15,7 @@ public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
     @MainActor
     private var rootViewController: UIViewController? {
         get {
-            if let viewController = bridge?.viewController {
-                return viewController
-            }
-
-            let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
-            let scene = scenes.first { $0.activationState == .foregroundActive } ?? scenes.first
-
-            return scene?.keyWindow?.rootViewController
-                ?? UIApplication.shared.delegate?.window??.rootViewController
+            bridge?.viewController
         }
     }
 
