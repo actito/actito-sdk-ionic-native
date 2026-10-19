@@ -13,9 +13,10 @@ public class ActitoLoyaltyPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "present", returnType: CAPPluginReturnPromise),
     ]
 
+    @MainActor
     private var rootViewController: UIViewController? {
         get {
-            UIApplication.shared.delegate?.window??.rootViewController
+            bridge?.viewController
         }
     }
 

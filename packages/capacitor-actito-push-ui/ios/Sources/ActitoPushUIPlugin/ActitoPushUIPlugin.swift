@@ -12,9 +12,10 @@ public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "presentAction", returnType: CAPPluginReturnPromise),
     ]
 
+    @MainActor
     private var rootViewController: UIViewController? {
         get {
-            UIApplication.shared.delegate?.window??.rootViewController
+            bridge?.viewController
         }
     }
 
@@ -101,22 +102,10 @@ public class ActitoPushUIPlugin: CAPPlugin, CAPBridgedPlugin {
         if let colorStr = theme?.backgroundColor {
             navigationController.view.backgroundColor = UIColor(hexString: colorStr)
         } else {
-            if #available(iOS 13.0, *) {
-                navigationController.view.backgroundColor = .systemBackground
-            } else {
-                navigationController.view.backgroundColor = .white
-            }
+            navigationController.view.backgroundColor = .systemBackground
         }
 
         return navigationController
-    }
-
-    @objc private func onCloseClicked() {
-        guard let rootViewController = rootViewController else {
-            return
-        }
-
-        rootViewController.dismiss(animated: true, completion: nil)
     }
 }
 
